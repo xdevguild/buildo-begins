@@ -26,11 +26,12 @@ For now, the first version gives you basic stuff and an example of making the tr
 
 ### How to work with Buildo:
 
-1. Derive the pem from seed phrase: `buildo-begins derive-pem`
-2. The walletKey.pem file will be created
-3. Send some EGLD `buildo-begins send-egld`
-4. You will get some prompts, fill up the required data
-5. For now, that's it. There will be much more!
+1. Install globally `npm install buildo-begins -g`
+2. Derive the pem from seed phrase: `buildo-begins derive-pem`
+3. The walletKey.pem file will be created
+4. Send some EGLD `buildo-begins send-egld`
+5. You will get some prompts, fill up the required data
+6. For now, that's it. There will be much more!
 
 ### Hot to use the config file?
 
