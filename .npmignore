@@ -1,0 +1,8 @@
+node_modules
+tsconfig.json
+.editorconfig
+.eslintrc
+.prettierrc
+!build
+src
+esbuild.config.js
