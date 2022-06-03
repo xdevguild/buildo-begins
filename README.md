@@ -5,6 +5,8 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 > I'm going on an adventure!
 > The road goes ever on and on.
 
+- YT: https://youtu.be/NijTSZhswns
+
 ### With what he will help you (not all is available yet!):
 
 1. Deriving PEM files
