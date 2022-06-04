@@ -7,6 +7,8 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 
 - YT: https://youtu.be/NijTSZhswns
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Buildo is a cool guy 👊</p>&mdash; Beniamin Mincu 🔥🌓 (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
+
 ### With what he will help you (not all is available yet!):
 
 1. Deriving PEM files
