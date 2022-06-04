@@ -20,7 +20,7 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 
 ### TODO
 
-For now, the first version gives you basic stuff and an example of making the transaction. But there will be much more:
+For now, the first version gives you basic stuff. But there will be much more:
 
 - examples for interaction with smart contracts,
 - proper erdjs interactions,
@@ -33,11 +33,22 @@ For now, the first version gives you basic stuff and an example of making the tr
 1. Install globally `npm install buildo-begins -g`
 2. Derive the pem from seed phrase: `buildo-begins derive-pem`
 3. The walletKey.pem file will be created
-4. Send some EGLD `buildo-begins send-egld`
+4. Check the commands with `buildo-begins --help`
+5. Use one of available commands, check them below.
 5. You will get some prompts, fill up the required data
-6. For now, that's it. There will be much more!
 
-### Hot to use the config file?
+### Available commands for Buildo (for now, there will be more):
+
+1. `buildo-begins derive-pem` - derive PEM file from seed phrase
+2. `buildo-begins send-egld` - send EGLD tokens
+3. `buildo-begins send-esdt` - send ESDT tokens
+4. `buildo-begins send-sft` - send SFT tokens
+5. `buildo-begins send-nft` - send NFT token
+6. `buildo-begins send-meta-esdt` - send Meta ESDT tokens
+
+What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
+
+### How to use the config file?
 
 Internally Buildo uses the config.ts file, but when you use it as a globally installed npm CLI tool, you don't have to touch that file. What you need to do is to create the `.buildobeginsrc` file, where you can change values (here default values):
 
