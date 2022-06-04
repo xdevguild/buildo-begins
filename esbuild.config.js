@@ -15,6 +15,7 @@ esbuild
       '@elrondnetwork/erdjs-walletcore',
       '@elrondnetwork/erdjs-network-providers',
       'ora',
+      'axios',
     ],
   })
   .catch(() => process.exit(1));
