@@ -14,7 +14,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the erd address\n',
+    message: 'Please provide the erd address (receiver)\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
