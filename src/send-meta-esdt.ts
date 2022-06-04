@@ -87,7 +87,7 @@ export const sendMetaEsdt = async () => {
       const tx = new Transaction({
         nonce,
         data,
-        gasLimit: 50000 + 1500 * data.length() + 1000000,
+        gasLimit: 50000 + 1500 * data.length() + 300000,
         receiver: signer.getAddress(), // Same as sender address!
         chainID: shortChainId[chain],
       });
