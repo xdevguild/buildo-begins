@@ -20,7 +20,8 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'amount',
-    message: 'Please provide amount of EGLD to send (ex. 1.5 is 1.5 EGLD)\n',
+    message:
+      'Please provide the amount of EGLD to send (ex. 1.5 is 1.5 EGLD)\n',
     validate: (value) =>
       value && !Number.isNaN(value) && Number(value) > 0
         ? true
@@ -53,7 +54,7 @@ export const sendEgld = async () => {
     const tx = new Transaction({
       data,
       gasLimit: 50000 + 1500 * data.length(),
-      receiver: new Address(address),
+      receiver: new Address(address.trim()),
       value: payment,
       chainID: shortChainId[chain],
     });

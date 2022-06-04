@@ -29,7 +29,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'amount',
     message:
-      'Please provide amount of Meta ESDT to send (ex. 0.1 is 0.1 amout of Meta ESDT token)\n',
+      'Please provide the amount of Meta ESDT to send (ex. 0.1 is 0.1 amount of Meta ESDT token)\n',
     validate: (value) =>
       value && !Number.isNaN(value) && Number(value) > 0
         ? true
@@ -54,7 +54,7 @@ export const sendMetaEsdt = async () => {
       decimals: number;
       nonce: number;
       ticker: string;
-    }>(`${publicApi[chain]}/nfts/${token}`, {
+    }>(`${publicApi[chain]}/nfts/${token.trim()}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -81,7 +81,7 @@ export const sendMetaEsdt = async () => {
       );
       const data = new ESDTNFTTransferPayloadBuilder()
         .setPayment(payment)
-        .setDestination(new Address(address))
+        .setDestination(new Address(address.trim()))
         .build();
 
       const tx = new Transaction({

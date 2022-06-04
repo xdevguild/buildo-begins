@@ -28,7 +28,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'amount',
     message:
-      'Please provide amount of SFT to send (ex. 1 is 1 amout of an SFT token)\n',
+      'Please provide the amount of SFT to send (ex. 1 is 1 amount of an SFT token)\n',
     validate: (value) =>
       value && !Number.isNaN(value) && Number(value) > 0
         ? true
@@ -50,7 +50,7 @@ export const sendSft = async () => {
     const { signer, userAccount, provider } = await setup();
 
     const sftOnNetwork = await axios.get<{ nonce: number; ticker: string }>(
-      `${publicApi[chain]}/nfts/${token}`,
+      `${publicApi[chain]}/nfts/${token.trim()}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export const sendSft = async () => {
       );
       const data = new ESDTNFTTransferPayloadBuilder()
         .setPayment(payment)
-        .setDestination(new Address(address))
+        .setDestination(new Address(address.trim()))
         .build();
 
       const tx = new Transaction({

@@ -42,7 +42,7 @@ export const sendNft = async () => {
     const { signer, userAccount, provider } = await setup();
 
     const nftOnNetwork = await axios.get<{ nonce: number; ticker: string }>(
-      `${publicApi[chain]}/nfts/${token}`,
+      `${publicApi[chain]}/nfts/${token.trim()}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const sendNft = async () => {
       const payment = TokenPayment.nonFungible(collectionTicker, nonce);
       const data = new ESDTNFTTransferPayloadBuilder()
         .setPayment(payment)
-        .setDestination(new Address(address))
+        .setDestination(new Address(address.trim()))
         .build();
 
       const tx = new Transaction({

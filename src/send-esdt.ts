@@ -28,7 +28,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'amount',
     message:
-      'Please provide amount of ESDT to send (ex. 1.5 is 1.5 amout of an ESDT token)\n',
+      'Please provide the amount of ESDT to send (ex. 1.5 is 1.5 amount of an ESDT token)\n',
     validate: (value) =>
       value && !Number.isNaN(value) && Number(value) > 0
         ? true
@@ -50,7 +50,7 @@ export const sendEsdt = async () => {
     const { signer, userAccount, provider } = await setup();
 
     const esdtOnNetwork = await axios.get<{ decimals: number }>(
-      `${publicApi[chain]}/tokens/${token}`,
+      `${publicApi[chain]}/tokens/${token.trim()}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export const sendEsdt = async () => {
       const tx = new Transaction({
         data,
         gasLimit: 50000 + 1500 * data.length() + 300000,
-        receiver: new Address(address),
+        receiver: new Address(address.trim()),
         chainID: shortChainId[chain],
       });
 
