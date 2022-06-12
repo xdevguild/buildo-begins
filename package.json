@@ -4,7 +4,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "types": "build/types",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
@@ -49,6 +49,7 @@
     "@elrondnetwork/erdjs-network-providers": "^0.1.5",
     "@elrondnetwork/erdjs-walletcore": "^1.0.0",
     "axios": "^0.27.2",
+    "bignumber.js": "^9.0.2",
     "cosmiconfig": "^7.0.1",
     "ora": "5.4.1",
     "prompts": "^2.4.2"

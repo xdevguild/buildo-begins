@@ -5,7 +5,8 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 > I'm going on an adventure!
 > The road goes ever on and on.
 
-- YT: https://youtu.be/NijTSZhswns
+- YT (sending tokens): https://youtu.be/NijTSZhswns
+- YT (issuing, mintin and burning ESDT supply): https://youtu.be/_Jj0zCaATVU
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Buildo is a cool guy 👊</p>&mdash; Beniamin Mincu 🔥🌓 (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
 
@@ -45,6 +46,9 @@ For now, the first version gives you basic stuff. But there will be much more:
 4. `buildo-begins send-sft` - send SFT tokens
 5. `buildo-begins send-nft` - send NFT token
 6. `buildo-begins send-meta-esdt` - send Meta ESDT tokens
+7. `buildo-begins issue-esdt` - issue new ESDT token
+8. `buildo-begins set-special-roles-esdt` - set/unset special ESDT roles
+9. `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires special roles)
 
 What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
 

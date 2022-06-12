@@ -8,8 +8,8 @@ import {
 } from '@elrondnetwork/erdjs';
 import axios from 'axios';
 
-import { areYouSureAnswer, setup, commonTxOperations } from './utils';
-import { chain, shortChainId, publicApi } from './config';
+import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
+import { chain, shortChainId, publicApi } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {

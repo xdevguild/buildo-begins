@@ -7,8 +7,8 @@ import {
   Address,
 } from '@elrondnetwork/erdjs';
 
-import { areYouSureAnswer, setup, commonTxOperations } from './utils';
-import { chain, shortChainId } from './config';
+import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
+import { chain, shortChainId } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
