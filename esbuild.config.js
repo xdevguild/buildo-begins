@@ -16,6 +16,7 @@ esbuild
       '@elrondnetwork/erdjs-network-providers',
       'ora',
       'axios',
+      'bignumber.js',
     ],
   })
   .catch(() => process.exit(1));

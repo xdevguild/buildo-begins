@@ -2,12 +2,16 @@
 
 import { exit, argv } from 'process';
 import packageJson from '../package.json';
+
 import { derivePem } from './derive-pem';
-import { sendEgld } from './send-egld';
-import { sendEsdt } from './send-esdt';
-import { sendMetaEsdt } from './send-meta-esdt';
-import { sendNft } from './send-nft';
-import { sendSft } from './send-sft';
+import { sendEsdt } from './esdt/send-esdt';
+import { issueEsdt } from './esdt/issue-esdt';
+import { mintBurnEsdt } from './esdt/mint-burn-esdt';
+import { setSpecialRolesEsdt } from './esdt/set-special-roles-esdt';
+import { sendEgld } from './egld/send-egld';
+import { sendNft } from './nft/send-nft';
+import { sendSft } from './sft/send-sft';
+import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -16,6 +20,9 @@ const COMMANDS = {
   sendNft: 'send-nft',
   sendSft: 'send-sft',
   sendMetaEsdt: 'send-meta-esdt',
+  issueEsdt: 'issue-esdt',
+  mintBurnEsdt: 'mint-burn-esdt',
+  setSpecialRolesEsdt: 'set-special-roles-esdt',
 };
 
 const args = argv;
@@ -58,6 +65,15 @@ switch (command) {
     break;
   case COMMANDS.sendMetaEsdt:
     sendMetaEsdt();
+    break;
+  case COMMANDS.issueEsdt:
+    issueEsdt();
+    break;
+  case COMMANDS.mintBurnEsdt:
+    mintBurnEsdt();
+    break;
+  case COMMANDS.setSpecialRolesEsdt:
+    setSpecialRolesEsdt();
     break;
   default:
     break;

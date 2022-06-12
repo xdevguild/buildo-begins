@@ -27,3 +27,26 @@ export const elrondExplorer: { [key: string]: string } = {
   testnet: 'https://testnet-explorer.elrond.com',
   mainnet: 'https://explorer.elrond.com',
 };
+
+export const esdtTokenProperties = [
+  'canFreeze',
+  'canWipe',
+  'canPause',
+  'canMint',
+  'canBurn',
+  'canChangeOwner',
+  'canUpgrade',
+  'canAddSpecialRoles',
+];
+
+export const esdtTokenSpecialRoles = ['ESDTRoleLocalBurn', 'ESDTRoleLocalMint'];
+
+// Build in address for token issuance
+export const builtInTokenIssuanceSC =
+  'erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u';
+
+// Predefined one time payment for token issuance (EGLD amount)
+export const issueTokenPayment = '0.05';
+
+export const esdtOpertationsGasLimit = 60000000;
+export const esdtLocalOpertationsGasLimit = 300000;
