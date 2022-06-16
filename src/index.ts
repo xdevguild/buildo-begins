@@ -12,6 +12,7 @@ import { sendEgld } from './egld/send-egld';
 import { sendNft } from './nft/send-nft';
 import { sendSft } from './sft/send-sft';
 import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
+import { herotag } from './herotag';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -23,6 +24,7 @@ const COMMANDS = {
   issueEsdt: 'issue-esdt',
   mintBurnEsdt: 'mint-burn-esdt',
   setSpecialRolesEsdt: 'set-special-roles-esdt',
+  herotag: 'herotag',
 };
 
 const args = argv;
@@ -74,6 +76,9 @@ switch (command) {
     break;
   case COMMANDS.setSpecialRolesEsdt:
     setSpecialRolesEsdt();
+    break;
+  case COMMANDS.herotag:
+    herotag();
     break;
   default:
     break;

@@ -17,6 +17,7 @@ esbuild
       'ora',
       'axios',
       'bignumber.js',
+      'keccak',
     ],
   })
   .catch(() => process.exit(1));

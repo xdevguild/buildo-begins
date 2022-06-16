@@ -4,7 +4,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "types": "build/types",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
@@ -31,6 +31,7 @@
     "typescript"
   ],
   "devDependencies": {
+    "@types/keccak": "^3.0.1",
     "@types/node": "^17.0.39",
     "@types/prompt": "^1.1.2",
     "@types/prompts": "^2.0.14",
@@ -51,6 +52,7 @@
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.2",
     "cosmiconfig": "^7.0.1",
+    "keccak": "^3.0.2",
     "ora": "5.4.1",
     "prompts": "^2.4.2"
   }
