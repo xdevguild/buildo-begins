@@ -49,6 +49,7 @@ For now, the first version gives you basic stuff. But there will be much more:
 7. `buildo-begins issue-esdt` - issue new ESDT token
 8. `buildo-begins set-special-roles-esdt` - set/unset special ESDT roles
 9. `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires special roles)
+10. `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
 
 What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
 

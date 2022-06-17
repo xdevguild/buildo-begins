@@ -3,8 +3,9 @@ import { exit, cwd } from 'process';
 import prompts, { PromptObject } from 'prompts';
 import { Transaction, TransactionWatcher } from '@elrondnetwork/erdjs';
 import ora from 'ora';
+import keccak from 'keccak';
 
-import { Account } from '@elrondnetwork/erdjs';
+import { Account, SmartContract, Address } from '@elrondnetwork/erdjs';
 import { parseUserKey, UserSigner } from '@elrondnetwork/erdjs-walletcore';
 import { ApiNetworkProvider } from '@elrondnetwork/erdjs-network-providers';
 
@@ -125,4 +126,24 @@ export const commonTxOperations = async (
   console.log(
     `Transaction link: ${elrondExplorer[chain]}/transactions/${txHash}\n`
   );
+};
+
+export const dnsScAddressForHerotag = (herotag: string) => {
+  const hashedHerotag = keccak('keccak256').update(herotag).digest();
+
+  const initialAddress = Buffer.from(Array(32).fill(1));
+  const initialAddressSlice = initialAddress.slice(0, 30);
+  const scId = hashedHerotag.slice(31);
+
+  const deployer_pubkey = Buffer.concat([
+    initialAddressSlice,
+    Buffer.from([0, scId.readUIntBE(0, 1)]),
+  ]);
+
+  const scAddress = SmartContract.computeAddress(
+    new Address(deployer_pubkey),
+    0
+  );
+
+  return scAddress;
 };

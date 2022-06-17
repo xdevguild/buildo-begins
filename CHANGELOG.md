@@ -1,3 +1,6 @@
+### [0.2.0](https://github.com/juliancwirko/buildo-begins/releases/tag/v0.2.0) (2022-06-16)
+- added `buildo-begins herotag` - a command for creating Elrond herotag (dns) and checking the address of the existing one
+
 ### [0.1.0](https://github.com/juliancwirko/buildo-begins/releases/tag/v0.1.0) (2022-06-12)
 - added `buildo-begins issue-esdt` command for issuing new ESDT tokens
 - added `buildo-begins set-special-roles-esdt` command for setting and unsetting special ESDT roles - local mint, and local burn
