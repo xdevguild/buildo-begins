@@ -5,10 +5,13 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 > I'm going on an adventure!
 > The road goes ever on and on.
 
-- YT (sending tokens): https://youtu.be/NijTSZhswns
-- YT (issuing, mintin and burning ESDT supply): https://youtu.be/_Jj0zCaATVU
-
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Buildo is a cool guy 👊</p>&mdash; Beniamin Mincu 🔥🌓 (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
+
+### Walkthrough videos
+
+- sending tokens: https://youtu.be/NijTSZhswns
+- issuing, mintin and burning ESDT supply: https://youtu.be/_Jj0zCaATVU
+- creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
 
 ### With what he will help you (not all is available yet!):
 
