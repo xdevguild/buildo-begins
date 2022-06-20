@@ -18,7 +18,7 @@ import {
   chain,
   shortChainId,
   issueTokenPayment,
-  builtInTokenIssuanceSC,
+  builtInEsdtSC,
   esdtOpertationsGasLimit,
   esdtTokenProperties,
 } from '../config';
@@ -124,7 +124,7 @@ export const issueEsdt = async () => {
     const tx = new Transaction({
       data,
       gasLimit: esdtOpertationsGasLimit,
-      receiver: new Address(builtInTokenIssuanceSC.trim()),
+      receiver: new Address(builtInEsdtSC.trim()),
       value: payment,
       chainID: shortChainId[chain],
     });

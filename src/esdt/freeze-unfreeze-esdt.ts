@@ -3,23 +3,33 @@ import { exit } from 'process';
 import {
   Transaction,
   BytesValue,
-  AddressValue,
-  Address,
   ContractCallPayloadBuilder,
   ContractFunction,
   TypedValue,
+  Address,
+  AddressValue,
 } from '@elrondnetwork/erdjs';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  builtInEsdtSC,
   esdtOpertationsGasLimit,
-  esdtTokenSpecialRoles,
+  builtInEsdtSC,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
+  {
+    type: 'select',
+    name: 'type',
+    message:
+      'Do you want to freeze or unfreeze the token balance in a specific account, preventing transfers to and from that account?\n',
+    validate: (value) => (!value ? 'Required!' : true),
+    choices: [
+      { title: 'Freeze', value: 'freeze' },
+      { title: 'Unfreeze', value: 'unfreeze' },
+    ],
+  },
   {
     type: 'text',
     name: 'ticker',
@@ -29,27 +39,16 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message:
-      'Please provide the address to assign the role. Can be also yours\n',
+    message: 'Please provide the address to freeze/unfreeze\n',
     validate: (value) => (!value ? 'Required!' : true),
-  },
-  {
-    type: 'multiselect',
-    name: 'specialRoles',
-    message:
-      'Please choose special roles to assign. When left empty it will unset the roles.\n',
-    choices: esdtTokenSpecialRoles.map((property) => ({
-      title: property,
-      value: property,
-    })),
   },
 ];
 
-export const setSpecialRolesEsdt = async () => {
+export const freezeUnfreezeEsdt = async () => {
   try {
-    const { ticker, address, specialRoles } = await prompts(promptQuestions);
+    const { ticker, address, type } = await prompts(promptQuestions);
 
-    if (!ticker || !address) {
+    if (!ticker) {
       console.log('You have to provide the ticker and address!');
       exit(9);
     }
@@ -60,24 +59,20 @@ export const setSpecialRolesEsdt = async () => {
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(ticker),
-      new AddressValue(new Address(address.trim())),
+      new AddressValue(new Address(address)),
     ];
 
-    for (const role of esdtTokenSpecialRoles) {
-      if (specialRoles.includes(role)) {
-        args.push(BytesValue.fromUTF8(role));
-      }
-    }
-
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('setSpecialRole'))
+      .setFunction(
+        new ContractFunction(type === 'freeze' ? 'freeze' : 'unFreeze')
+      )
       .setArgs(args)
       .build();
 
     const tx = new Transaction({
       data,
       gasLimit: esdtOpertationsGasLimit,
-      receiver: new Address(builtInEsdtSC.trim()),
+      receiver: new Address(builtInEsdtSC),
       value: 0,
       chainID: shortChainId[chain],
     });

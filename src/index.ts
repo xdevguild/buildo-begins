@@ -13,6 +13,8 @@ import { sendNft } from './nft/send-nft';
 import { sendSft } from './sft/send-sft';
 import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 import { herotag } from './herotag';
+import { pauseUnpauseEsdt } from './esdt/pause-unpause';
+import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -25,6 +27,8 @@ const COMMANDS = {
   mintBurnEsdt: 'mint-burn-esdt',
   setSpecialRolesEsdt: 'set-special-roles-esdt',
   herotag: 'herotag',
+  pauseUnpauseEsdt: 'pause-unpause-esdt',
+  freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
 };
 
 const args = argv;
@@ -79,6 +83,12 @@ switch (command) {
     break;
   case COMMANDS.herotag:
     herotag();
+    break;
+  case COMMANDS.pauseUnpauseEsdt:
+    pauseUnpauseEsdt();
+    break;
+  case COMMANDS.freezeUnfreezeEsdt:
+    freezeUnfreezeEsdt();
     break;
   default:
     break;
