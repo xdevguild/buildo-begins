@@ -42,7 +42,7 @@ export const esdtTokenProperties = [
 export const esdtTokenSpecialRoles = ['ESDTRoleLocalBurn', 'ESDTRoleLocalMint'];
 
 // Build in address for token issuance
-export const builtInTokenIssuanceSC =
+export const builtInEsdtSC =
   'erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u';
 
 // Predefined one time payment for token issuance (EGLD amount)
