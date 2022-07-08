@@ -4,7 +4,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "types": "build/types",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
@@ -46,8 +46,8 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@elrondnetwork/erdjs": "^10.2.5",
-    "@elrondnetwork/erdjs-network-providers": "^0.1.5",
+    "@elrondnetwork/erdjs": "^10.2.7",
+    "@elrondnetwork/erdjs-network-providers": "^0.1.6",
     "@elrondnetwork/erdjs-walletcore": "^1.0.0",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.2",

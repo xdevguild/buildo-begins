@@ -1,3 +1,6 @@
+### [0.2.2](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.2.2) (2022-07-08)
+- added `buildo-begins wipe-esdt` - a command for wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
+
 ### [0.2.1](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.2.1) (2022-06-20)
 - added `buildo-begins pause-unpause-esdt` - a command for pause or unpause all transactions of the token (of course you need `canPause` role on such ESDT)
 - added `buildo-begins freeze-unfreeze-esdt` - a command to freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (of course you need `canFreeze` role on such ESDT)
