@@ -3,7 +3,8 @@
 Meet Buildo. He is here to help you start creating in the Elrond blockchain ecosystem. Here is where everything begins.
 
 > I'm going on an adventure!
-> The road goes ever on and on.
+> The road goes ever on and on. \
+&mdash; Buildo
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Buildo is a cool guy 👊</p>&mdash; Beniamin Mincu 🔥🌓 (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
 
@@ -51,10 +52,11 @@ For now, the first version gives you basic stuff. But there will be much more:
 6. `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 7. `buildo-begins issue-esdt` - issue new ESDT token
 8. `buildo-begins set-special-roles-esdt` - set/unset special ESDT roles
-9. `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires `canMint`, `canBurn` roles)
+9. `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires `ESDTRoleLocalBurn`, `ESDTRoleLocalMint` roles)
 10. `buildo-begins pause-unpause-esdt` - pause/unpause all transactions of the token (requires `canPause` role)
 11. `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
-12. `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
+12. `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
+13. `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
 
 What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
 

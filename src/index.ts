@@ -15,6 +15,7 @@ import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 import { herotag } from './herotag';
 import { pauseUnpauseEsdt } from './esdt/pause-unpause';
 import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
+import { wipeEsdt } from './esdt/wipe-esdt';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -29,6 +30,7 @@ const COMMANDS = {
   herotag: 'herotag',
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
+  wipeEsdt: 'wipe-esdt',
 };
 
 const args = argv;
@@ -89,6 +91,9 @@ switch (command) {
     break;
   case COMMANDS.freezeUnfreezeEsdt:
     freezeUnfreezeEsdt();
+    break;
+  case COMMANDS.wipeEsdt:
+    wipeEsdt();
     break;
   default:
     break;
