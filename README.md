@@ -14,6 +14,10 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 - issuing, mintin and burning ESDT supply: https://youtu.be/_Jj0zCaATVU
 - creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
 
+### Related articles
+
+- [Setup erdjs and issue ESDT](https://elrond-dev-guild.gitbook.io/scrolls/erdjs/how-tos/setup-erdjs-and-issue-esdt-token)
+
 ### With what he will help you (not all is available yet!):
 
 1. Deriving PEM files
