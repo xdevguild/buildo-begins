@@ -13,6 +13,7 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 - sending tokens: https://youtu.be/NijTSZhswns
 - issuing, mintin and burning ESDT supply: https://youtu.be/_Jj0zCaATVU
 - creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
+- Elrond data converters: https://youtu.be/soUq9eX9-0s
 
 ### Related articles
 
