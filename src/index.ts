@@ -16,6 +16,7 @@ import { herotag } from './herotag';
 import { pauseUnpauseEsdt } from './esdt/pause-unpause';
 import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
 import { wipeEsdt } from './esdt/wipe-esdt';
+import { converters } from './converters';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -31,6 +32,7 @@ const COMMANDS = {
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
   wipeEsdt: 'wipe-esdt',
+  converters: 'converters',
 };
 
 const args = argv;
@@ -94,6 +96,9 @@ switch (command) {
     break;
   case COMMANDS.wipeEsdt:
     wipeEsdt();
+    break;
+  case COMMANDS.converters:
+    converters();
     break;
   default:
     break;

@@ -19,11 +19,12 @@
     "no-use-before-define": "error",
     "no-mixed-spaces-and-tabs": "error",
     "no-nested-ternary": "error",
-    "no-unused-vars": "error",
     "prettier/prettier": ["error", {
       "endOfLine": "auto"
     }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }

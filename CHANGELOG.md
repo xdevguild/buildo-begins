@@ -1,3 +1,6 @@
+### [0.3.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.0) (2022-07-20)
+- added `buildo-begins converters` - a set of Elrond converters based on http://207.244.241.38/elrond-converters/
+
 ### [0.2.2](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.2.2) (2022-07-08)
 - added `buildo-begins wipe-esdt` - a command for wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
 
