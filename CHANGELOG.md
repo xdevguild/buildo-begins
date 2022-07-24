@@ -1,7 +1,7 @@
 ### [0.3.1](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.1) (2022-07-24)
 - fix misleading label for `buildo-begins converters`
 
-### [0.3.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.0) (2022-07-20)
+### [0.3.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.0) (2022-07-23)
 - added `buildo-begins converters` - a set of Elrond converters based on http://207.244.241.38/elrond-converters/
 
 ### [0.2.2](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.2.2) (2022-07-08)
