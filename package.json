@@ -4,7 +4,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "types": "build/types",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {

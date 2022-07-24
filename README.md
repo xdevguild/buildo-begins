@@ -13,6 +13,7 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 - sending tokens: https://youtu.be/NijTSZhswns
 - issuing, mintin and burning ESDT supply: https://youtu.be/_Jj0zCaATVU
 - creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
+- Elrond data converters: https://youtu.be/soUq9eX9-0s
 
 ### Related articles
 
@@ -48,6 +49,8 @@ For now, the first version gives you basic stuff. But there will be much more:
 
 ### Available commands for Buildo (for now, there will be more):
 
+Each command will display a set of self-explanatory prompts.
+
 1. `buildo-begins derive-pem` - derive PEM file from seed phrase
 2. `buildo-begins send-egld` - send EGLD tokens
 3. `buildo-begins send-esdt` - send ESDT tokens
@@ -61,6 +64,7 @@ For now, the first version gives you basic stuff. But there will be much more:
 11. `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
 12. `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
 13. `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
+14. `buildo-begins converters` - a set of converters based on excelent [Elrond Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 
 What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
 
