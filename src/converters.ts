@@ -25,7 +25,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'select',
     name: 'type',
-    message: 'What do you want to do with the herotag?\n',
+    message: 'Choose the type of conversion.\n',
     validate: (value) => (!value ? 'Required!' : true),
     choices: [
       {
