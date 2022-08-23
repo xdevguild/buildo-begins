@@ -50,3 +50,4 @@ export const issueTokenPayment = '0.05';
 
 export const esdtOpertationsGasLimit = 60000000;
 export const esdtLocalOpertationsGasLimit = 300000;
+export const esdtTransferOwnershipGasLimit = 60000000;

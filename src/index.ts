@@ -15,6 +15,7 @@ import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 import { herotag } from './herotag';
 import { pauseUnpauseEsdt } from './esdt/pause-unpause';
 import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
+import { transferOwnershipESDT } from './esdt/transferOwnership-esdt';
 import { wipeEsdt } from './esdt/wipe-esdt';
 import { converters } from './converters';
 
@@ -31,6 +32,7 @@ const COMMANDS = {
   herotag: 'herotag',
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
+  transferOwnershipESDT: 'transferOwnershipESDT',
   wipeEsdt: 'wipe-esdt',
   converters: 'converters',
 };
@@ -93,6 +95,9 @@ switch (command) {
     break;
   case COMMANDS.freezeUnfreezeEsdt:
     freezeUnfreezeEsdt();
+    break;
+  case COMMANDS.transferOwnershipESDT:
+    transferOwnershipESDT();
     break;
   case COMMANDS.wipeEsdt:
     wipeEsdt();

@@ -1,0 +1,4 @@
+{
+  "chain": "testnet",
+  "customApi": "https://testnet-api.elrond.com"
+}
