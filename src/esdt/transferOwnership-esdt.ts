@@ -11,7 +11,12 @@ import {
 } from '@elrondnetwork/erdjs';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
-import { chain, shortChainId, esdtTransferOwnershipGasLimit } from '../config';
+import {
+  chain,
+  shortChainId,
+  esdtTransferOwnershipGasLimit,
+  builtInEsdtSC,
+} from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
@@ -55,7 +60,7 @@ export const transferOwnershipESDT = async () => {
     const tx = new Transaction({
       data,
       gasLimit: esdtTransferOwnershipGasLimit,
-      receiver: new Address(address.trim()),
+      receiver: new Address(builtInEsdtSC.trim()),
       value: 0,
       chainID: shortChainId[chain],
     });
