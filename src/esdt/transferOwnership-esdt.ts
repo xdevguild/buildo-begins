@@ -14,7 +14,7 @@ import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  esdtTransferOwnershipGasLimit,
+  esdtOpertationsGasLimit,
   builtInEsdtSC,
 } from '../config';
 
@@ -29,7 +29,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the address to transfer. Can be also yours\n',
+    message: 'Please provide the address of a new owner\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
 ];
@@ -59,7 +59,7 @@ export const transferOwnershipESDT = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: esdtTransferOwnershipGasLimit,
+      gasLimit: esdtOpertationsGasLimit,
       receiver: new Address(builtInEsdtSC.trim()),
       value: 0,
       chainID: shortChainId[chain],

@@ -32,7 +32,7 @@ const COMMANDS = {
   herotag: 'herotag',
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
-  transferOwnershipESDT: 'transferOwnershipESDT',
+  transferOwnershipESDT: 'transfer-ownership-esdt',
   wipeEsdt: 'wipe-esdt',
   converters: 'converters',
 };
