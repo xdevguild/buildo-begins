@@ -1,3 +1,6 @@
+### [0.3.2](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.2) (2022-08-24)
+- added ESDT `transferOwnership` - thanks to @waqasideofuzion 
+
 ### [0.3.1](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.1) (2022-07-24)
 - fix misleading label for `buildo-begins converters`
 

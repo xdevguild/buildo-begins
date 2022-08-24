@@ -15,7 +15,7 @@ import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 import { herotag } from './herotag';
 import { pauseUnpauseEsdt } from './esdt/pause-unpause';
 import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
-import { transferOwnershipESDT } from './esdt/transferOwnership-esdt';
+import { transferOwnershipESDT } from './esdt/transfer-ownership-esdt';
 import { wipeEsdt } from './esdt/wipe-esdt';
 import { converters } from './converters';
 
