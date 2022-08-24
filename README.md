@@ -68,7 +68,7 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins pause-unpause-esdt` - pause/unpause all transactions of the token (requires `canPause` role)
 - `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
 - `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
-- `buildo-begins transfer-ownership-esdt` - The manager of an ESDT token may transfer the management rights to another Account
+- `buildo-begins transfer-ownership-esdt` - The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the `canChangeOwner` is set to true.
 
 #### EGLD operations (will be more...)
 
