@@ -14,8 +14,8 @@ import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  esdtOpertationsGasLimit,
-  builtInEsdtSC,
+  commonOpertationsGasLimit,
+  builtInSC,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
@@ -34,7 +34,7 @@ const promptQuestions: PromptObject[] = [
   },
 ];
 
-export const transferOwnershipESDT = async () => {
+export const transferOwnershipEsdt = async () => {
   try {
     const { ticker, address } = await prompts(promptQuestions);
 
@@ -59,8 +59,9 @@ export const transferOwnershipESDT = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: esdtOpertationsGasLimit,
-      receiver: new Address(builtInEsdtSC.trim()),
+      gasLimit: commonOpertationsGasLimit,
+      receiver: new Address(builtInSC.trim()),
+      sender: signer.getAddress(),
       value: 0,
       chainID: shortChainId[chain],
     });

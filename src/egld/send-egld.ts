@@ -54,6 +54,7 @@ export const sendEgld = async () => {
     const tx = new Transaction({
       data,
       gasLimit: 50000 + 1500 * data.length(),
+      sender: signer.getAddress(),
       receiver: new Address(address.trim()),
       value: payment,
       chainID: shortChainId[chain],

@@ -1,3 +1,8 @@
+### [0.4.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.4.0) (2022-08-31)
+- added some of the SFT operations (issue, roles, create), more soon
+- updated dependencies (erdjs etc.)
+- MIT license
+
 ### [0.3.2](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.3.2) (2022-08-24)
 - added ESDT `transferOwnership` - thanks to @waqasideofuzion 
 

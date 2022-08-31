@@ -1,12 +1,9 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
-import Bignumber from 'bignumber.js';
 import {
   TokenPayment,
   Transaction,
   BytesValue,
-  U32Value,
-  BigUIntValue,
   Address,
   ContractCallPayloadBuilder,
   ContractFunction,
@@ -20,14 +17,15 @@ import {
   issueTokenPayment,
   builtInSC,
   commonOpertationsGasLimit,
-  esdtTokenProperties,
+  sftTokenProperties,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'name',
-    message: 'Please provide the token name (3-20 characters, alphanumeric)\n',
+    message:
+      'Please provide the collection token name (3-20 characters, alphanumeric)\n',
     validate: (value) => {
       if (!value) return 'Required!';
       if (value.length > 20 || value.length < 3) {
@@ -43,7 +41,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'ticker',
     message:
-      'Please provide the token ticker (3-10 characters, alphanumeric, uppercase)\n',
+      'Please provide the collection token ticker (3-10 characters, alphanumeric, uppercase)\n',
     validate: (value) => {
       if (!value) return 'Required!';
       if (value.length > 10 || value.length < 3) {
@@ -56,38 +54,22 @@ const promptQuestions: PromptObject[] = [
     },
   },
   {
-    type: 'text',
-    name: 'initialSupply',
-    message: 'Please provide the initial supply\n',
-    validate: (value) =>
-      !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
-  },
-  {
-    type: 'text',
-    name: 'numberOfDecimals',
-    message: 'Please provide the number of decimals\n',
-    validate: (value) => (!value ? 'Required!' : true),
-  },
-  {
     type: 'multiselect',
     name: 'tokenProperties',
     message: 'Please choose token properties.\n',
-    choices: esdtTokenProperties.map((property) => ({
+    choices: sftTokenProperties.map((property) => ({
       title: property,
       value: property,
     })),
   },
 ];
 
-export const issueEsdt = async () => {
+export const issueSft = async () => {
   try {
-    const { name, ticker, initialSupply, numberOfDecimals, tokenProperties } =
-      await prompts(promptQuestions);
+    const { name, ticker, tokenProperties } = await prompts(promptQuestions);
 
-    if (!name || !ticker || !initialSupply || !numberOfDecimals) {
-      console.log(
-        'You have to provide the name, ticker, initial supply and number of decimals for your token!'
-      );
+    if (!name || !ticker) {
+      console.log('You have to provide the name and ticker for your token!');
       exit(9);
     }
 
@@ -100,11 +82,9 @@ export const issueEsdt = async () => {
     const args: TypedValue[] = [
       BytesValue.fromUTF8(name),
       BytesValue.fromUTF8(ticker),
-      new BigUIntValue(new Bignumber(initialSupply)),
-      new U32Value(numberOfDecimals),
     ];
 
-    for (const property of esdtTokenProperties) {
+    for (const property of sftTokenProperties) {
       let propertyEnabled = false;
 
       if (tokenProperties.includes(property)) {
@@ -116,7 +96,7 @@ export const issueEsdt = async () => {
     }
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('issue'))
+      .setFunction(new ContractFunction('issueSemiFungible'))
       .setArgs(args)
       .build();
 

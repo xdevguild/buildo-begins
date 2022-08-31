@@ -13,8 +13,8 @@ import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  esdtOpertationsGasLimit,
-  builtInEsdtSC,
+  commonOpertationsGasLimit,
+  builtInSC,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
@@ -58,8 +58,9 @@ export const pauseUnpauseEsdt = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: esdtOpertationsGasLimit,
-      receiver: new Address(builtInEsdtSC),
+      gasLimit: commonOpertationsGasLimit,
+      receiver: new Address(builtInSC),
+      sender: signer.getAddress(),
       value: 0,
       chainID: shortChainId[chain],
     });

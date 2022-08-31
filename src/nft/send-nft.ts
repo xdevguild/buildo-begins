@@ -71,6 +71,7 @@ export const sendNft = async () => {
         data,
         gasLimit: 50000 + 1500 * data.length() + 300000,
         receiver: signer.getAddress(), // Same as sender address!
+        sender: signer.getAddress(),
         chainID: shortChainId[chain],
       });
 

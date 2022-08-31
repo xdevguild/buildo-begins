@@ -3,33 +3,23 @@ import { exit } from 'process';
 import {
   Transaction,
   BytesValue,
+  AddressValue,
+  Address,
   ContractCallPayloadBuilder,
   ContractFunction,
   TypedValue,
-  Address,
-  AddressValue,
 } from '@elrondnetwork/erdjs';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  commonOpertationsGasLimit,
   builtInSC,
+  commonOpertationsGasLimit,
+  sftTokenSpecialRoles,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
-  {
-    type: 'select',
-    name: 'type',
-    message:
-      'Do you want to freeze or unfreeze the token balance in a specific account, preventing transfers to and from that account?\n',
-    validate: (value) => (!value ? 'Required!' : true),
-    choices: [
-      { title: 'Freeze', value: 'freeze' },
-      { title: 'Unfreeze', value: 'unfreeze' },
-    ],
-  },
   {
     type: 'text',
     name: 'ticker',
@@ -39,16 +29,26 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the address to freeze/unfreeze\n',
+    message:
+      'Please provide the address to assign the role. Can be also yours\n',
     validate: (value) => (!value ? 'Required!' : true),
+  },
+  {
+    type: 'multiselect',
+    name: 'specialRoles',
+    message: 'Please choose special roles to assign.\n',
+    choices: sftTokenSpecialRoles.map((property) => ({
+      title: property,
+      value: property,
+    })),
   },
 ];
 
-export const freezeUnfreezeEsdt = async () => {
+export const setSpecialRolesSft = async () => {
   try {
-    const { ticker, address, type } = await prompts(promptQuestions);
+    const { ticker, address, specialRoles } = await prompts(promptQuestions);
 
-    if (!ticker) {
+    if (!ticker || !address) {
       console.log('You have to provide the ticker and address!');
       exit(9);
     }
@@ -59,20 +59,24 @@ export const freezeUnfreezeEsdt = async () => {
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(ticker),
-      new AddressValue(new Address(address)),
+      new AddressValue(new Address(address.trim())),
     ];
 
+    for (const role of sftTokenSpecialRoles) {
+      if (specialRoles.includes(role)) {
+        args.push(BytesValue.fromUTF8(role));
+      }
+    }
+
     const data = new ContractCallPayloadBuilder()
-      .setFunction(
-        new ContractFunction(type === 'freeze' ? 'freeze' : 'unFreeze')
-      )
+      .setFunction(new ContractFunction('setSpecialRole'))
       .setArgs(args)
       .build();
 
     const tx = new Transaction({
       data,
       gasLimit: commonOpertationsGasLimit,
-      receiver: new Address(builtInSC),
+      receiver: new Address(builtInSC.trim()),
       sender: signer.getAddress(),
       value: 0,
       chainID: shortChainId[chain],

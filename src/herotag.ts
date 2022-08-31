@@ -103,6 +103,7 @@ export const herotag = async () => {
         value: 0,
         gasLimit: 50000 + 1500 * data.length() + 20000000,
         receiver: dnsScAddress,
+        sender: signer.getAddress(),
         chainID: shortChainId[chain],
       });
 

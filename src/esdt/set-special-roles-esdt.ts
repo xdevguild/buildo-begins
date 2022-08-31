@@ -14,8 +14,8 @@ import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {
   chain,
   shortChainId,
-  builtInEsdtSC,
-  esdtOpertationsGasLimit,
+  builtInSC,
+  commonOpertationsGasLimit,
   esdtTokenSpecialRoles,
 } from '../config';
 
@@ -36,8 +36,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'multiselect',
     name: 'specialRoles',
-    message:
-      'Please choose special roles to assign. When left empty it will unset the roles.\n',
+    message: 'Please choose special roles to assign.\n',
     choices: esdtTokenSpecialRoles.map((property) => ({
       title: property,
       value: property,
@@ -76,8 +75,9 @@ export const setSpecialRolesEsdt = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: esdtOpertationsGasLimit,
-      receiver: new Address(builtInEsdtSC.trim()),
+      gasLimit: commonOpertationsGasLimit,
+      receiver: new Address(builtInSC.trim()),
+      sender: signer.getAddress(),
       value: 0,
       chainID: shortChainId[chain],
     });

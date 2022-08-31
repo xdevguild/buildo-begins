@@ -12,6 +12,7 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 
 - sending tokens: https://youtu.be/NijTSZhswns
 - issuing, minting and burning ESDT supply: https://youtu.be/_Jj0zCaATVU
+- issuing and creating an SFT collection: https://youtu.be/ozOYli4qQx4
 - creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
 - Elrond data converters: https://youtu.be/soUq9eX9-0s
 
@@ -60,8 +61,6 @@ Each command will display a set of self-explanatory prompts.
 
 #### ESDT operations
 
-- `buildo-begins send-esdt` - send ESDT tokens
-- `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 - `buildo-begins issue-esdt` - issue new ESDT token
 - `buildo-begins set-special-roles-esdt` - set/unset special ESDT roles
 - `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires `ESDTRoleLocalBurn`, `ESDTRoleLocalMint` roles)
@@ -69,14 +68,21 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
 - `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
 - `buildo-begins transfer-ownership-esdt` - The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the `canChangeOwner` is set to true.
+- `buildo-begins send-esdt` - send ESDT tokens
+
+#### SFT operations (will be more...)
+
+- `buildo-begins issue-sft` - issue a new SFT collection
+- `buildo-begins set-sepacial-roles-sft` - set special roles for SFT
+- `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
+- `buildo-begins send-sft` - send SFT tokens
+
+#### Meta ESDT operations (will be more...)
+- `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 
 #### EGLD operations (will be more...)
 
 - `buildo-begins send-egld` - send EGLD tokens
-
-#### SFT operations (will be more...)
-
-- `buildo-begins send-sft` - send SFT tokens
 
 #### NFT operations (will be more...)
 

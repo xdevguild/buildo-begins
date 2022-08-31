@@ -11,7 +11,7 @@ import {
 } from '@elrondnetwork/erdjs';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
-import { chain, shortChainId, esdtLocalOpertationsGasLimit } from '../config';
+import { chain, shortChainId, specialOpertationsGasLimit } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
@@ -68,8 +68,9 @@ export const mintBurnEsdt = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: esdtLocalOpertationsGasLimit,
+      gasLimit: specialOpertationsGasLimit,
       receiver: userAccount.address,
+      sender: signer.getAddress(),
       value: 0,
       chainID: shortChainId[chain],
     });

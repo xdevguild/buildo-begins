@@ -41,12 +41,29 @@ export const esdtTokenProperties = [
 
 export const esdtTokenSpecialRoles = ['ESDTRoleLocalBurn', 'ESDTRoleLocalMint'];
 
-// Build in address for token issuance
-export const builtInEsdtSC =
+export const sftTokenProperties = [
+  'canFreeze',
+  'canWipe',
+  'canPause',
+  'canTransferNFTCreateRole',
+  'canChangeOwner',
+  'canUpgrade',
+  'canAddSpecialRoles',
+];
+
+export const sftTokenSpecialRoles = [
+  'ESDTRoleNFTCreate',
+  'ESDTRoleNFTBurn',
+  'ESDTRoleNFTAddQuantity',
+  'ESDTTransferRole',
+];
+
+// Build in address for tokens operations
+export const builtInSC =
   'erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u';
 
 // Predefined one time payment for token issuance (EGLD amount)
 export const issueTokenPayment = '0.05';
 
-export const esdtOpertationsGasLimit = 60000000;
-export const esdtLocalOpertationsGasLimit = 300000;
+export const commonOpertationsGasLimit = 60000000;
+export const specialOpertationsGasLimit = 300000;

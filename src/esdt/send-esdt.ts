@@ -73,6 +73,7 @@ export const sendEsdt = async () => {
         data,
         gasLimit: 50000 + 1500 * data.length() + 300000,
         receiver: new Address(address.trim()),
+        sender: signer.getAddress(),
         chainID: shortChainId[chain],
       });
 

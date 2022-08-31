@@ -15,26 +15,32 @@ import { sendMetaEsdt } from './meta-esdt/send-meta-esdt';
 import { herotag } from './herotag';
 import { pauseUnpauseEsdt } from './esdt/pause-unpause';
 import { freezeUnfreezeEsdt } from './esdt/freeze-unfreeze-esdt';
-import { transferOwnershipESDT } from './esdt/transfer-ownership-esdt';
+import { transferOwnershipEsdt } from './esdt/transfer-ownership-esdt';
 import { wipeEsdt } from './esdt/wipe-esdt';
 import { converters } from './converters';
+import { issueSft } from './sft/issue-sft';
+import { setSpecialRolesSft } from './sft/set-special-roles-sft';
+import { createSft } from './sft/create-sft';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
+  herotag: 'herotag',
+  converters: 'converters',
   sendEgld: 'send-egld',
   sendEsdt: 'send-esdt',
-  sendNft: 'send-nft',
-  sendSft: 'send-sft',
-  sendMetaEsdt: 'send-meta-esdt',
   issueEsdt: 'issue-esdt',
   mintBurnEsdt: 'mint-burn-esdt',
   setSpecialRolesEsdt: 'set-special-roles-esdt',
-  herotag: 'herotag',
+  sendMetaEsdt: 'send-meta-esdt',
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
-  transferOwnershipESDT: 'transfer-ownership-esdt',
+  transferOwnershipEsdt: 'transfer-ownership-esdt',
   wipeEsdt: 'wipe-esdt',
-  converters: 'converters',
+  sendNft: 'send-nft',
+  sendSft: 'send-sft',
+  issueSft: 'issue-sft',
+  setSpecialRolesSft: 'set-special-roles-sft',
+  createSft: 'create-sft',
 };
 
 const args = argv;
@@ -96,14 +102,23 @@ switch (command) {
   case COMMANDS.freezeUnfreezeEsdt:
     freezeUnfreezeEsdt();
     break;
-  case COMMANDS.transferOwnershipESDT:
-    transferOwnershipESDT();
+  case COMMANDS.transferOwnershipEsdt:
+    transferOwnershipEsdt();
     break;
   case COMMANDS.wipeEsdt:
     wipeEsdt();
     break;
   case COMMANDS.converters:
     converters();
+    break;
+  case COMMANDS.issueSft:
+    issueSft();
+    break;
+  case COMMANDS.setSpecialRolesSft:
+    setSpecialRolesSft();
+    break;
+  case COMMANDS.createSft:
+    createSft();
     break;
   default:
     break;

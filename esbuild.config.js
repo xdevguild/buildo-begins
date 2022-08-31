@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const esbuild = require('esbuild');
+import esbuild from 'esbuild';
 
 esbuild
   .build({
@@ -7,6 +7,7 @@ esbuild
     bundle: true,
     minify: true,
     outdir: 'build',
+    format: 'esm',
     platform: 'node',
     external: [
       'cosmiconfig',
