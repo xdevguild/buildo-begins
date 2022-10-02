@@ -65,5 +65,6 @@ export const builtInSC =
 // Predefined one time payment for token issuance (EGLD amount)
 export const issueTokenPayment = '0.05';
 
-export const commonOpertationsGasLimit = 60000000;
-export const specialOpertationsGasLimit = 300000;
+export const commonOpertationsGasLimit = 60_000_000;
+export const commonBuiltInOpertationsGasLimit = 6_000_000;
+export const specialOpertationsGasLimit = 3_000_00;

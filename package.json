@@ -5,14 +5,13 @@
   },
   "type": "module",
   "types": "build/types",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
     "buildo-begins": "./build/index.js"
   },
   "scripts": {
-    "generate": "npm run build && node build/index.js",
     "build": "rimraf build && node ./esbuild.config.js && tsc",
     "dev:lint": "eslint src/** --fix",
     "dev:prettier": "prettier --write 'src/**/*.{js,ts,json}'",
@@ -33,21 +32,21 @@
   ],
   "devDependencies": {
     "@types/keccak": "^3.0.1",
-    "@types/node": "^18.7.14",
+    "@types/node": "^18.7.23",
     "@types/prompts": "^2.0.14",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
-    "esbuild": "^0.15.6",
-    "eslint": "^8.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "esbuild": "^0.15.10",
+    "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@elrondnetwork/erdjs": "^11.0.0",
-    "@elrondnetwork/erdjs-network-providers": "^1.1.0",
+    "@elrondnetwork/erdjs": "^11.1.0",
+    "@elrondnetwork/erdjs-network-providers": "^1.1.1",
     "@elrondnetwork/erdjs-walletcore": "^2.1.0",
     "axios": "^0.27.2",
     "bignumber.js": "^9.1.0",

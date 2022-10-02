@@ -21,11 +21,15 @@ import { converters } from './converters';
 import { issueSft } from './sft/issue-sft';
 import { setSpecialRolesSft } from './sft/set-special-roles-sft';
 import { createSft } from './sft/create-sft';
+import { claimDeveloperRewards } from './claim-dev-rewards';
+import { changeOwnerAddress } from './change-owner-address';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
   herotag: 'herotag',
   converters: 'converters',
+  claimDevRewards: 'claim-developer-rewards',
+  changeOwnerAddress: 'change-owner-address',
   sendEgld: 'send-egld',
   sendEsdt: 'send-esdt',
   issueEsdt: 'issue-esdt',
@@ -119,6 +123,12 @@ switch (command) {
     break;
   case COMMANDS.createSft:
     createSft();
+    break;
+  case COMMANDS.claimDevRewards:
+    claimDeveloperRewards();
+    break;
+  case COMMANDS.changeOwnerAddress:
+    changeOwnerAddress();
     break;
   default:
     break;
