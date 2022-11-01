@@ -22,15 +22,8 @@ const promptQuestions: PromptObject[] = [
   },
   {
     type: 'text',
-    name: 'initialQuantity',
-    message: 'Please provide the initial quantity\n',
-    validate: (value) =>
-      !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
-  },
-  {
-    type: 'text',
     name: 'name',
-    message: 'Please provide the SFT token name\n',
+    message: 'Please provide the NFT token name\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
@@ -61,12 +54,13 @@ const promptQuestions: PromptObject[] = [
   },
 ];
 
-export const createSft = async () => {
+export const createNft = async () => {
   try {
-    const { ticker, initialQuantity, name, royalties, uris, attributes, hash } =
-      await prompts(promptQuestions);
+    const { ticker, name, royalties, uris, attributes, hash } = await prompts(
+      promptQuestions
+    );
 
-    if (!initialQuantity || !ticker) {
+    if (!ticker) {
       console.log(
         'You have to provide the ticker, initial quantity, name, royalties and uris for your token!'
       );
@@ -79,7 +73,7 @@ export const createSft = async () => {
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(ticker),
-      new BigUIntValue(new Bignumber(initialQuantity)),
+      new BigUIntValue(new Bignumber(1)),
       BytesValue.fromUTF8(name),
       new BigUIntValue(new Bignumber(Number(royalties) * 100 || 0)),
       BytesValue.fromUTF8(hash || ''),

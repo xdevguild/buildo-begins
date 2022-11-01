@@ -64,7 +64,7 @@ const promptQuestions: PromptObject[] = [
   },
 ];
 
-export const issueSft = async () => {
+export const issueNft = async () => {
   try {
     const { name, ticker, tokenProperties } = await prompts(promptQuestions);
 
@@ -96,7 +96,7 @@ export const issueSft = async () => {
     }
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('issueSemiFungible'))
+      .setFunction(new ContractFunction('issueNonFungible'))
       .setArgs(args)
       .build();
 

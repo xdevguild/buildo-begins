@@ -6,7 +6,8 @@ Meet Buildo. He is here to help you start creating in the Elrond blockchain ecos
 > The road goes ever on and on. \
 &mdash; Buildo
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Buildo is a cool guy 👊</p>&mdash; Beniamin Mincu 🔥🌓 (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
+> Buildo is a cool guy 👊 \
+&mdash; Beniamin Mincu (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
 
 ### Walkthrough videos
 
@@ -79,6 +80,13 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
 - `buildo-begins send-sft` - send SFT tokens
 
+#### NFT operations (will be more...)
+
+- `buildo-begins issue-nft` - issue a new NFT collection
+- `buildo-begins set-sepacial-roles-nft` - set special roles for NFT
+- `buildo-begins create-nft` - create a new NFT, assets, attributes, etc.
+- `buildo-begins send-nft` - send NFT token
+
 #### Meta ESDT operations (will be more...)
 - `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 
@@ -86,11 +94,7 @@ Each command will display a set of self-explanatory prompts.
 
 - `buildo-begins send-egld` - send EGLD tokens
 
-#### NFT operations (will be more...)
-
-- `buildo-begins send-nft` - send NFT token
-
-What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker. The maximum amount of arguments will always be the address, token id, and amount. It will differ for each type, but these are maximum.
+What is awesome here is that you don't have to worry about proper nonce, decimal places, or differentiation between the NFT token id and collection ticker.
 
 ### How to use the config file?
 
@@ -114,3 +118,9 @@ Internally Buildo uses the config.ts file, but when you use it as a globally ins
 
 - [elven-tools](https://github.com/juliancwirko/elven-tools-cli)
 - [nft-art-maker](https://github.com/juliancwirko/nft-art-maker)
+
+### Other tools:
+
+- [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the Elrond blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the Elrond blockchain!
+- [Elven Tools](https://www.elven.tools) - The PFP NFT toolset: NFT minter smart contract (decentralized way of minting), minter Nextjs dapp (interaction on the frontend side), CLI tool (deploy, configuration, interaction).
+- [Next.js Dapp Template](https://github.com/ElrondDevGuild/nextjs-dapp-template) - general purpose Next.js dapp template

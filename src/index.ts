@@ -21,6 +21,9 @@ import { converters } from './converters';
 import { issueSft } from './sft/issue-sft';
 import { setSpecialRolesSft } from './sft/set-special-roles-sft';
 import { createSft } from './sft/create-sft';
+import { issueNft } from './nft/issue-nft';
+import { setSpecialRolesNft } from './nft/set-special-roles-nft';
+import { createNft } from './nft/create-nft';
 import { claimDeveloperRewards } from './claim-dev-rewards';
 import { changeOwnerAddress } from './change-owner-address';
 
@@ -41,6 +44,9 @@ const COMMANDS = {
   transferOwnershipEsdt: 'transfer-ownership-esdt',
   wipeEsdt: 'wipe-esdt',
   sendNft: 'send-nft',
+  issueNft: 'issue-nft',
+  setSpecialRolesNft: 'set-special-roles-nft',
+  createNft: 'create-nft',
   sendSft: 'send-sft',
   issueSft: 'issue-sft',
   setSpecialRolesSft: 'set-special-roles-sft',
@@ -123,6 +129,15 @@ switch (command) {
     break;
   case COMMANDS.createSft:
     createSft();
+    break;
+  case COMMANDS.issueNft:
+    issueNft();
+    break;
+  case COMMANDS.setSpecialRolesNft:
+    setSpecialRolesNft();
+    break;
+  case COMMANDS.createNft:
+    createNft();
     break;
   case COMMANDS.claimDevRewards:
     claimDeveloperRewards();

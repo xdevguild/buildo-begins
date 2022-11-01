@@ -41,7 +41,7 @@ export const esdtTokenProperties = [
 
 export const esdtTokenSpecialRoles = ['ESDTRoleLocalBurn', 'ESDTRoleLocalMint'];
 
-export const sftTokenProperties = [
+export const sftNftTokenProperties = [
   'canFreeze',
   'canWipe',
   'canPause',
@@ -55,6 +55,14 @@ export const sftTokenSpecialRoles = [
   'ESDTRoleNFTCreate',
   'ESDTRoleNFTBurn',
   'ESDTRoleNFTAddQuantity',
+  'ESDTTransferRole',
+];
+
+export const nftTokenSpecialRoles = [
+  'ESDTRoleNFTCreate',
+  'ESDTRoleNFTBurn',
+  'ESDTRoleNFTUpdateAttributes',
+  'ESDTRoleNFTAddURI',
   'ESDTTransferRole',
 ];
 

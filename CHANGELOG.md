@@ -1,3 +1,7 @@
+### [0.6.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.6.0) (2022-11-01)
+- added some of the NFT operations (issue, roles, create), more soon
+- updated dependencies (erdjs etc.)
+
 ### [0.5.0](https://github.com/ElrondDevGuild/buildo-begins/releases/tag/v0.5.0) (2022-10-02)
 - added `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
 - added `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
