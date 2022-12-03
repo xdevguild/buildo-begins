@@ -26,6 +26,9 @@ import { setSpecialRolesNft } from './nft/set-special-roles-nft';
 import { createNft } from './nft/create-nft';
 import { claimDeveloperRewards } from './claim-dev-rewards';
 import { changeOwnerAddress } from './change-owner-address';
+import { issueMetaEsdt } from './meta-esdt/issue-meta-esdt';
+import { setSpecialRolesMetaEsdt } from './meta-esdt/set-special-roles-meta-esdt';
+import { createMetaEsdt } from './meta-esdt/create-meta-esdt';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -38,7 +41,6 @@ const COMMANDS = {
   issueEsdt: 'issue-esdt',
   mintBurnEsdt: 'mint-burn-esdt',
   setSpecialRolesEsdt: 'set-special-roles-esdt',
-  sendMetaEsdt: 'send-meta-esdt',
   pauseUnpauseEsdt: 'pause-unpause-esdt',
   freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
   transferOwnershipEsdt: 'transfer-ownership-esdt',
@@ -51,6 +53,10 @@ const COMMANDS = {
   issueSft: 'issue-sft',
   setSpecialRolesSft: 'set-special-roles-sft',
   createSft: 'create-sft',
+  sendMetaEsdt: 'send-meta-esdt',
+  issueMetaEsdt: 'issue-meta-esdt',
+  setSpecialRolesMetaEsdt: 'set-special-roles-meta-esdt',
+  createMetaEsdt: 'create-meta-esdt',
 };
 
 const args = argv;
@@ -144,6 +150,15 @@ switch (command) {
     break;
   case COMMANDS.changeOwnerAddress:
     changeOwnerAddress();
+    break;
+  case COMMANDS.issueMetaEsdt:
+    issueMetaEsdt();
+    break;
+  case COMMANDS.setSpecialRolesMetaEsdt:
+    setSpecialRolesMetaEsdt();
+    break;
+  case COMMANDS.createMetaEsdt:
+    createMetaEsdt();
     break;
   default:
     break;

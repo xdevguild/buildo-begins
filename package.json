@@ -5,7 +5,7 @@
   },
   "type": "module",
   "types": "build/types",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Elrond blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
@@ -27,30 +27,31 @@
   "keywords": [
     "cli",
     "elrond",
+    "multiversx",
     "blockchain",
     "typescript"
   ],
   "devDependencies": {
     "@types/keccak": "^3.0.1",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.10",
     "@types/prompts": "^2.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
-    "esbuild": "^0.15.12",
-    "eslint": "^8.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "esbuild": "^0.15.16",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@elrondnetwork/erdjs": "^11.1.1",
-    "@elrondnetwork/erdjs-network-providers": "^1.1.2",
+    "@elrondnetwork/erdjs": "^11.1.2",
+    "@elrondnetwork/erdjs-network-providers": "^1.1.3",
     "@elrondnetwork/erdjs-walletcore": "^2.1.0",
-    "axios": "^1.1.3",
+    "axios": "^1.2.0",
     "bignumber.js": "^9.1.0",
-    "cosmiconfig": "^7.0.1",
+    "cosmiconfig": "^8.0.0",
     "keccak": "^3.0.2",
     "ora": "^6.1.2",
     "prompts": "^2.4.2"
