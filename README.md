@@ -18,6 +18,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - issuing and creating Meta ESDTs: https://youtu.be/dsRswHhIteU
 - creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
 - data converters: https://youtu.be/soUq9eX9-0s
+- storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
 
 ### Related articles
 
@@ -51,9 +52,10 @@ Each command will display a set of self-explanatory prompts.
 
 - `buildo-begins derive-pem` - derive PEM file from seed phrase
 - `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
-- `buildo-begins converters` - a set of converters based on excelent [Elrond Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
+- `buildo-begins converters` - a set of converters based on excelent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
 - `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
+- `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue that receives any number of key-value pairs.
 
 #### ESDT operations
 
@@ -134,6 +136,6 @@ For now, the first version gives you basic stuff. But there will be much more:
 
 ### Other tools:
 
-- [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the Elrond blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the Elrond blockchain!
+- [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the MultiversX (Elrond) blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the MultiversX (Elrond) blockchain!
 - [Elven Tools](https://www.elven.tools) - The PFP NFT toolset: NFT minter smart contract (decentralized way of minting), minter Nextjs dapp (interaction on the frontend side), CLI tool (deploy, configuration, interaction).
 - [Next.js Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - general purpose Next.js dapp template

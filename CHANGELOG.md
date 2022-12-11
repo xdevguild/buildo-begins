@@ -1,3 +1,7 @@
+### [0.7.1](https://github.com/xdevguild/buildo-begins/releases/tag/v0.7.1) (2022-12-11)
+- added `buildo-begins account-store` (Account storage) - you can now save custom data under an account as key-value pairs
+- updated dependencies
+
 ### [0.7.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.7.0) (2022-12-02)
 - added some of the Meta ESDT operations (issue, roles, create), more soon
 - updated dependencies
@@ -23,7 +27,7 @@
 - fix misleading label for `buildo-begins converters`
 
 ### [0.3.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.3.0) (2022-07-23)
-- added `buildo-begins converters` - a set of Elrond converters based on http://207.244.241.38/elrond-converters/
+- added `buildo-begins converters` - a s et of Elrond converters based on http://207.244.241.38/elrond-converters/
 
 ### [0.2.2](https://github.com/xdevguild/buildo-begins/releases/tag/v0.2.2) (2022-07-08)
 - added `buildo-begins wipe-esdt` - a command for wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)

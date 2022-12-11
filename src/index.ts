@@ -29,6 +29,7 @@ import { changeOwnerAddress } from './change-owner-address';
 import { issueMetaEsdt } from './meta-esdt/issue-meta-esdt';
 import { setSpecialRolesMetaEsdt } from './meta-esdt/set-special-roles-meta-esdt';
 import { createMetaEsdt } from './meta-esdt/create-meta-esdt';
+import { accountStore } from './account-store';
 
 const COMMANDS = {
   derivePem: 'derive-pem',
@@ -36,6 +37,7 @@ const COMMANDS = {
   converters: 'converters',
   claimDevRewards: 'claim-developer-rewards',
   changeOwnerAddress: 'change-owner-address',
+  accountStore: 'account-store',
   sendEgld: 'send-egld',
   sendEsdt: 'send-esdt',
   issueEsdt: 'issue-esdt',
@@ -159,6 +161,9 @@ switch (command) {
     break;
   case COMMANDS.createMetaEsdt:
     createMetaEsdt();
+    break;
+  case COMMANDS.accountStore:
+    accountStore();
     break;
   default:
     break;
