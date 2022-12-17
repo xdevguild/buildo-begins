@@ -5,7 +5,7 @@
   },
   "type": "module",
   "types": "build/types",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "MultiversX (Elrond) blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {

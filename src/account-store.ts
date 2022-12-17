@@ -31,9 +31,9 @@ const getTotalAdditionalGasLimit = (
   data: TransactionPayload,
   keyValuePairs: string
 ) => {
-  const saveKeyValueCost = 250000;
-  const moveBalanceCost = 50000;
-  const costPerByte = data.length() * 1500;
+  const saveKeyValueCost = 100_000;
+  const moveBalanceCost = 50_000;
+  const costPerByte = data.length() * 1_500;
 
   let persistPerByteKey = 0;
   let persistPerByteValue = 0;
@@ -44,9 +44,9 @@ const getTotalAdditionalGasLimit = (
       const split = keyValue.replaceAll(' ', '').split(':');
       const key = split[0];
       const value = split[1];
-      persistPerByteKey = persistPerByteKey + key.length * 10_000;
-      persistPerByteValue = persistPerByteValue + value.length * 10_000;
-      storePerByte = storePerByte + value.length * 50_000;
+      persistPerByteKey = persistPerByteKey + key.length * 1_000;
+      persistPerByteValue = persistPerByteValue + value.length * 1_000;
+      storePerByte = storePerByte + value.length * 10_000;
     }
   }
 

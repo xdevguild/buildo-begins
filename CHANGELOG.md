@@ -1,3 +1,6 @@
+### [0.7.2](https://github.com/xdevguild/buildo-begins/releases/tag/v0.7.2) (2022-12-17)
+- adjust gas limit calculation for the `buildo-begins account-store`
+
 ### [0.7.1](https://github.com/xdevguild/buildo-begins/releases/tag/v0.7.1) (2022-12-11)
 - added `buildo-begins account-store` (Account storage) - you can now save custom data under an account as key-value pairs
 - updated dependencies
