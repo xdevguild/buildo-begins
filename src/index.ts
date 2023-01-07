@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 import { exit, argv } from 'process';
+import chalk from 'chalk';
 import packageJson from '../package.json';
 
 import { derivePem } from './derive-pem';
 import { sendEsdt } from './esdt/send-esdt';
 import { issueEsdt } from './esdt/issue-esdt';
 import { mintBurnEsdt } from './esdt/mint-burn-esdt';
-import { setSpecialRolesEsdt } from './esdt/set-special-roles-esdt';
+import { toggleSpecialRolesEsdt } from './esdt/toggle-special-roles-esdt';
 import { sendEgld } from './egld/send-egld';
 import { sendNft } from './nft/send-nft';
 import { sendSft } from './sft/send-sft';
@@ -31,34 +32,185 @@ import { setSpecialRolesMetaEsdt } from './meta-esdt/set-special-roles-meta-esdt
 import { createMetaEsdt } from './meta-esdt/create-meta-esdt';
 import { accountStore } from './account-store';
 
-const COMMANDS = {
-  derivePem: 'derive-pem',
-  herotag: 'herotag',
-  converters: 'converters',
-  claimDevRewards: 'claim-developer-rewards',
-  changeOwnerAddress: 'change-owner-address',
-  accountStore: 'account-store',
-  sendEgld: 'send-egld',
-  sendEsdt: 'send-esdt',
-  issueEsdt: 'issue-esdt',
-  mintBurnEsdt: 'mint-burn-esdt',
-  setSpecialRolesEsdt: 'set-special-roles-esdt',
-  pauseUnpauseEsdt: 'pause-unpause-esdt',
-  freezeUnfreezeEsdt: 'freeze-unfreeze-esdt',
-  transferOwnershipEsdt: 'transfer-ownership-esdt',
-  wipeEsdt: 'wipe-esdt',
-  sendNft: 'send-nft',
-  issueNft: 'issue-nft',
-  setSpecialRolesNft: 'set-special-roles-nft',
-  createNft: 'create-nft',
-  sendSft: 'send-sft',
-  issueSft: 'issue-sft',
-  setSpecialRolesSft: 'set-special-roles-sft',
-  createSft: 'create-sft',
-  sendMetaEsdt: 'send-meta-esdt',
-  issueMetaEsdt: 'issue-meta-esdt',
-  setSpecialRolesMetaEsdt: 'set-special-roles-meta-esdt',
-  createMetaEsdt: 'create-meta-esdt',
+interface CommandData {
+  name: string;
+  fn: () => Promise<void>;
+  description: string;
+}
+
+const commands: Record<string, CommandData[]> = {
+  general: [
+    {
+      name: 'derive-pem',
+      fn: derivePem,
+      description: 'Derive PEM file from seed phrase',
+    },
+    {
+      name: 'herotag',
+      fn: herotag,
+      description:
+        'Create a herotag and assign it to addres and check addresses of existing ones',
+    },
+    {
+      name: 'converters',
+      fn: converters,
+      description: 'A set of data converters.',
+    },
+    {
+      name: 'claim-developer-rewards',
+      fn: claimDeveloperRewards,
+      description:
+        "Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it",
+    },
+    {
+      name: 'change-owner-address',
+      fn: changeOwnerAddress,
+      description:
+        'You can change the owner address of the smart contract you own',
+    },
+    {
+      name: 'account-store',
+      fn: accountStore,
+      description:
+        'A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.',
+    },
+  ],
+  egld: [
+    {
+      name: 'send-egld',
+      fn: sendEgld,
+      description: 'Send EGLD tokens',
+    },
+  ],
+  esdt: [
+    {
+      name: 'issue-esdt',
+      fn: issueEsdt,
+      description: 'Issue new ESDT token',
+    },
+    {
+      name: 'set-special-roles-esdt',
+      fn: () => toggleSpecialRolesEsdt('set'),
+      description: 'Set special ESDT roles',
+    },
+    {
+      name: 'unset-special-roles-esdt',
+      fn: () => toggleSpecialRolesEsdt('unset'),
+      description: 'Unset special ESDT roles',
+    },
+    {
+      name: 'mint-burn-esdt',
+      fn: mintBurnEsdt,
+      description:
+        "Mint or Burn the ESDT token supply (requires 'ESDTRoleLocalBurn', 'ESDTRoleLocalMint' roles)",
+    },
+    {
+      name: 'pause-unpause-esdt',
+      fn: pauseUnpauseEsdt,
+      description:
+        "Pause or unpause all transactions of the token (requires 'canPause' role)",
+    },
+    {
+      name: 'freeze-unfreeze-esdt',
+      fn: freezeUnfreezeEsdt,
+      description:
+        "Freeze or unfreeze the token balance in a specific account, preventing transfers to and from that account (requires 'canFreeze' role)",
+    },
+    {
+      name: 'wipe-esdt',
+      fn: wipeEsdt,
+      description:
+        'Wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)',
+    },
+    {
+      name: 'transfer-ownership-esdt',
+      fn: transferOwnershipEsdt,
+      description:
+        "The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the 'canChangeOwner' is set to true.",
+    },
+    {
+      name: 'send-esdt',
+      fn: sendEsdt,
+      description: 'Send ESDT tokens',
+    },
+  ],
+  sft: [
+    {
+      name: 'issue-sft',
+      fn: issueSft,
+      description: 'Issue a new SFT collection',
+    },
+    {
+      name: 'set-special-roles-sft',
+      fn: setSpecialRolesSft,
+      description: 'Set special roles for SFT',
+    },
+    {
+      name: 'create-sft',
+      fn: createSft,
+      description:
+        'Create a new SFT with initial quantity, assets, attributes, etc.',
+    },
+    {
+      name: 'send-sft',
+      fn: sendSft,
+      description: 'Send SFT tokens',
+    },
+  ],
+  nft: [
+    {
+      name: 'issue-nft',
+      fn: issueNft,
+      description: 'Issue a new NFT collection',
+    },
+    {
+      name: 'set-special-roles-nft',
+      fn: setSpecialRolesNft,
+      description: 'Set special roles for NFT',
+    },
+    {
+      name: 'create-nft',
+      fn: createNft,
+      description: 'Create a new NFT with assets, attributes, etc.',
+    },
+    {
+      name: 'send-nft',
+      fn: sendNft,
+      description: 'Send NFT tokens',
+    },
+  ],
+  metaEsdt: [
+    {
+      name: 'issue-meta-esdt',
+      fn: issueMetaEsdt,
+      description: 'Issue a new Meta ESDT collection',
+    },
+    {
+      name: 'set-special-roles-meta-esdt',
+      fn: setSpecialRolesMetaEsdt,
+      description: 'Set special roles for Meta ESDT',
+    },
+    {
+      name: 'create-meta-esdt',
+      fn: createMetaEsdt,
+      description:
+        'Create a new Meta ESDT with initial quantity, assets, attributes, etc.',
+    },
+    {
+      name: 'send-meta-esdt',
+      fn: sendMetaEsdt,
+      description: 'Send Meta ESDT tokens',
+    },
+  ],
+};
+
+const flatCommandsCollection = Object.values(commands).flat();
+
+const findCommandData = (
+  commandsCollection: CommandData[],
+  command: string
+) => {
+  return commandsCollection.find((item) => item.name === command);
 };
 
 const args = argv;
@@ -70,101 +222,46 @@ if (command === '--version' || command === '-v') {
   exit();
 }
 
-if (!command || !Object.values(COMMANDS).includes(command)) {
-  const availableCommands = Object.values(COMMANDS);
+// Show the list of commands
+if (
+  !command ||
+  ['--help', '-h'].includes(command) ||
+  !findCommandData(flatCommandsCollection, command)
+) {
+  const sections = Object.keys(commands);
+
+  let availableCommands = '';
+
+  for (const section of sections) {
+    availableCommands =
+      availableCommands +
+      chalk.underline(
+        `${
+          section.charAt(0).toUpperCase() + section.slice(1)
+        } operations (example: buildo-begins ${chalk.bold(
+          commands[section][0].name
+        )})`
+      ) +
+      '\n\n';
+
+    for (const cmd of commands[section]) {
+      availableCommands =
+        availableCommands + `${chalk.blue(cmd.name)}\n  ${cmd.description}\n\n`;
+    }
+  }
+
+  availableCommands =
+    availableCommands + chalk.blue('--version (-v)\n--help (-h)');
+
   console.log(
-    `\nPlease provide a proper command. Available commands:\n\n${[
-      ...availableCommands,
-      '--version',
-      '-v',
-      '--help',
-    ].join('\n')}\n`
+    `\n${chalk.bold(
+      'Please provide a proper command. Available commands:'
+    )}\n\n${availableCommands}\n\n${chalk.bold(
+      'Please provide a proper command from the list above!\n'
+    )}`
   );
   exit(9);
 }
 
-switch (command) {
-  case COMMANDS.derivePem:
-    derivePem();
-    break;
-  case COMMANDS.sendEgld:
-    sendEgld();
-    break;
-  case COMMANDS.sendEsdt:
-    sendEsdt();
-    break;
-  case COMMANDS.sendNft:
-    sendNft();
-    break;
-  case COMMANDS.sendSft:
-    sendSft();
-    break;
-  case COMMANDS.sendMetaEsdt:
-    sendMetaEsdt();
-    break;
-  case COMMANDS.issueEsdt:
-    issueEsdt();
-    break;
-  case COMMANDS.mintBurnEsdt:
-    mintBurnEsdt();
-    break;
-  case COMMANDS.setSpecialRolesEsdt:
-    setSpecialRolesEsdt();
-    break;
-  case COMMANDS.herotag:
-    herotag();
-    break;
-  case COMMANDS.pauseUnpauseEsdt:
-    pauseUnpauseEsdt();
-    break;
-  case COMMANDS.freezeUnfreezeEsdt:
-    freezeUnfreezeEsdt();
-    break;
-  case COMMANDS.transferOwnershipEsdt:
-    transferOwnershipEsdt();
-    break;
-  case COMMANDS.wipeEsdt:
-    wipeEsdt();
-    break;
-  case COMMANDS.converters:
-    converters();
-    break;
-  case COMMANDS.issueSft:
-    issueSft();
-    break;
-  case COMMANDS.setSpecialRolesSft:
-    setSpecialRolesSft();
-    break;
-  case COMMANDS.createSft:
-    createSft();
-    break;
-  case COMMANDS.issueNft:
-    issueNft();
-    break;
-  case COMMANDS.setSpecialRolesNft:
-    setSpecialRolesNft();
-    break;
-  case COMMANDS.createNft:
-    createNft();
-    break;
-  case COMMANDS.claimDevRewards:
-    claimDeveloperRewards();
-    break;
-  case COMMANDS.changeOwnerAddress:
-    changeOwnerAddress();
-    break;
-  case COMMANDS.issueMetaEsdt:
-    issueMetaEsdt();
-    break;
-  case COMMANDS.setSpecialRolesMetaEsdt:
-    setSpecialRolesMetaEsdt();
-    break;
-  case COMMANDS.createMetaEsdt:
-    createMetaEsdt();
-    break;
-  case COMMANDS.accountStore:
-    accountStore();
-    break;
-  default:
-    break;
-}
+// Trigger command
+findCommandData(flatCommandsCollection, command)?.fn();

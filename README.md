@@ -55,17 +55,19 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins converters` - a set of converters based on excelent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
 - `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
-- `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue that receives any number of key-value pairs.
+- `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.
 
 #### ESDT operations
 
 - `buildo-begins issue-esdt` - issue new ESDT token
-- `buildo-begins set-special-roles-esdt` - set/unset special ESDT roles
+- `buildo-begins set-special-roles-esdt` - set special ESDT roles
+- `buildo-begins unset-special-roles-esdt` - unset special ESDT roles
 - `buildo-begins mint-burn-esdt` - mint/burn the ESDT token supply (requires `ESDTRoleLocalBurn`, `ESDTRoleLocalMint` roles)
 - `buildo-begins pause-unpause-esdt` - pause/unpause all transactions of the token (requires `canPause` role)
 - `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
 - `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
 - `buildo-begins transfer-ownership-esdt` - The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the `canChangeOwner` is set to true.
+- `buildo-begins change-properties-esdt` - change token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-esdt` - send ESDT tokens
 
 #### SFT operations (will be more...)
@@ -73,7 +75,8 @@ Each command will display a set of self-explanatory prompts.
 To create SFTs keep the order of operations: `issue-sft` -> `set-special-roles-sft` -> `create-sft`
 
 - `buildo-begins issue-sft` - issue a new SFT collection
-- `buildo-begins set-sepacial-roles-sft` - set special roles for SFT
+- `buildo-begins set-special-roles-sft` - set special roles for SFT
+- `buildo-begins unset-special-roles-sft` - unset special roles for SFT
 - `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
 - `buildo-begins send-sft` - send SFT tokens
 
@@ -82,7 +85,8 @@ To create SFTs keep the order of operations: `issue-sft` -> `set-special-roles-s
 To create NFTs keep the order of operations: `issue-nft` -> `set-special-roles-nft` -> `create-nft`
 
 - `buildo-begins issue-nft` - issue a new NFT collection
-- `buildo-begins set-sepacial-roles-nft` - set special roles for NFT
+- `buildo-begins set-special-roles-nft` - set special roles for NFT
+- `buildo-begins unset-special-roles-nft` - unset special roles for NFT
 - `buildo-begins create-nft` - create a new NFT, assets, attributes, etc.
 - `buildo-begins send-nft` - send NFT token
 
@@ -90,9 +94,10 @@ To create NFTs keep the order of operations: `issue-nft` -> `set-special-roles-n
 
 To create Meta ESDTs keep the order of operations: `issue-meta-esdt` -> `set-special-roles-meta-esdt` -> `create-meta-esdt`
 
-- `buildo-begins issue-meta-esdt` - issue a new NFT collection
-- `buildo-begins set-sepacial-roles-meta-esdt` - set special roles for NFT
-- `buildo-begins create-meta-esdt` - create a new NFT, assets, attributes, etc.
+- `buildo-begins issue-meta-esdt` - issue a new Meta ESDT collection
+- `buildo-begins set-special-roles-meta-esdt` - set special roles for Meta ESDT
+- `buildo-begins unset-special-roles-meta-esdt` - unset special roles for Meta ESDT
+- `buildo-begins create-meta-esdt` - create a new Meta ESDT, assets, attributes, etc.
 - `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 
 Meta ESDTs are usually managed and used through smart contracts, but here you can issue, create and also set optional attributes as strings.
@@ -138,4 +143,4 @@ For now, the first version gives you basic stuff. But there will be much more:
 
 - [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the MultiversX (Elrond) blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the MultiversX (Elrond) blockchain!
 - [Elven Tools](https://www.elven.tools) - The PFP NFT toolset: NFT minter smart contract (decentralized way of minting), minter Nextjs dapp (interaction on the frontend side), CLI tool (deploy, configuration, interaction).
-- [Next.js Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - general purpose Next.js dapp template
+- [Next.js Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - general purpose Next.js dapp template for interacting with MultiversX blockchain

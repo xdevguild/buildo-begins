@@ -1,3 +1,13 @@
+### [0.8.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.8.0) (2023-01-07)
+- added 
+  - `buildo-begins unset-special-roles-esdt`
+  - `buildo-begins unset-special-roles-sft`
+  - `buildo-begins unset-special-roles-nft`
+  - `buildo-begins unset-special-roles-meta-esdt`
+  - `buildo-begins change-properties-esdt`
+- removed deprecated ESDT properties: `canMint` and `canBurn`, these are replaced with special roles `ESDTRoleLocalMint` and `ESDTRoleLocalBurn`
+- better display of the commands when using `--help` flag
+
 ### [0.7.2](https://github.com/xdevguild/buildo-begins/releases/tag/v0.7.2) (2022-12-17)
 - adjust gas limit calculation for the `buildo-begins account-store`
 

@@ -19,7 +19,7 @@ import {
   esdtTokenSpecialRoles,
 } from '../config';
 
-const promptQuestions: PromptObject[] = [
+const promptQuestions = (type: 'set' | 'unset'): PromptObject[] => [
   {
     type: 'text',
     name: 'ticker',
@@ -29,14 +29,17 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message:
-      'Please provide the address to assign the role. Can be also yours\n',
+    message: `Please provide the address ${
+      type === 'set' ? 'to assign' : 'with'
+    } the role.\n`,
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
     type: 'multiselect',
     name: 'specialRoles',
-    message: 'Please choose special roles to assign.\n',
+    message: `Please choose special roles to ${
+      type === 'set' ? 'assign' : 'remove'
+    }.\n`,
     choices: esdtTokenSpecialRoles.map((property) => ({
       title: property,
       value: property,
@@ -44,9 +47,11 @@ const promptQuestions: PromptObject[] = [
   },
 ];
 
-export const setSpecialRolesEsdt = async () => {
+export const toggleSpecialRolesEsdt = async (type: 'set' | 'unset') => {
   try {
-    const { ticker, address, specialRoles } = await prompts(promptQuestions);
+    const { ticker, address, specialRoles } = await prompts(
+      promptQuestions(type)
+    );
 
     if (!ticker || !address) {
       console.log('You have to provide the ticker and address!');
@@ -69,7 +74,11 @@ export const setSpecialRolesEsdt = async () => {
     }
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('setSpecialRole'))
+      .setFunction(
+        new ContractFunction(
+          type === 'set' ? 'setSpecialRole' : 'usSetSpecialRole'
+        )
+      )
       .setArgs(args)
       .build();
 
