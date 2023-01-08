@@ -5,6 +5,9 @@
   - `buildo-begins unset-special-roles-nft`
   - `buildo-begins unset-special-roles-meta-esdt`
   - `buildo-begins change-properties-esdt`
+  - `buildo-begins change-properties-sft`
+  - `buildo-begins change-properties-nft`
+  - `buildo-begins change-properties-meta-esdt`
 - removed deprecated ESDT properties: `canMint` and `canBurn`, these are replaced with special roles `ESDTRoleLocalMint` and `ESDTRoleLocalBurn`
 - better display of the commands when using `--help` flag
 

@@ -56,17 +56,19 @@ const promptQuestions: PromptObject[] = [
     },
   },
   {
-    type: 'text',
-    name: 'initialSupply',
-    message: 'Please provide the initial supply\n',
+    type: 'number',
+    name: 'numberOfDecimals',
+    message: 'Please provide the number of decimals\n',
     validate: (value) =>
-      !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
+      !value || value < 0 ? 'Required non negative number!' : true,
   },
   {
     type: 'text',
-    name: 'numberOfDecimals',
-    message: 'Please provide the number of decimals\n',
-    validate: (value) => (!value ? 'Required!' : true),
+    name: 'initialSupply',
+    message:
+      'Please provide the initial supply (remember to take into consideration the number of decimals)\n',
+    validate: (value) =>
+      !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },
   {
     type: 'multiselect',

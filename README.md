@@ -67,7 +67,7 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins freeze-unfreeze-esdt` - freeze/unfreeze the token balance in a specific account, preventing transfers to and from that account (requires `canFreeze` role)
 - `buildo-begins wipe-esdt` - wipe out the tokens held by a previously frozen account, reducing the supply (Wiping the tokens of an Account is an operation designed to help token managers to comply with regulations.)
 - `buildo-begins transfer-ownership-esdt` - The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the `canChangeOwner` is set to true.
-- `buildo-begins change-properties-esdt` - change token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
+- `buildo-begins change-properties-esdt` - change ESDT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-esdt` - send ESDT tokens
 
 #### SFT operations (will be more...)
@@ -78,6 +78,7 @@ To create SFTs keep the order of operations: `issue-sft` -> `set-special-roles-s
 - `buildo-begins set-special-roles-sft` - set special roles for SFT
 - `buildo-begins unset-special-roles-sft` - unset special roles for SFT
 - `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
+- `buildo-begins change-properties-sft` - change SFT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-sft` - send SFT tokens
 
 #### NFT operations (will be more...)
@@ -88,6 +89,7 @@ To create NFTs keep the order of operations: `issue-nft` -> `set-special-roles-n
 - `buildo-begins set-special-roles-nft` - set special roles for NFT
 - `buildo-begins unset-special-roles-nft` - unset special roles for NFT
 - `buildo-begins create-nft` - create a new NFT, assets, attributes, etc.
+- `buildo-begins change-properties-nft` - change NFT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-nft` - send NFT token
 
 #### Meta ESDT operations (will be more...)
@@ -98,6 +100,7 @@ To create Meta ESDTs keep the order of operations: `issue-meta-esdt` -> `set-spe
 - `buildo-begins set-special-roles-meta-esdt` - set special roles for Meta ESDT
 - `buildo-begins unset-special-roles-meta-esdt` - unset special roles for Meta ESDT
 - `buildo-begins create-meta-esdt` - create a new Meta ESDT, assets, attributes, etc.
+- `buildo-begins change-properties-meta-esdt` - change Meta ESDT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-meta-esdt` - send Meta ESDT tokens
 
 Meta ESDTs are usually managed and used through smart contracts, but here you can issue, create and also set optional attributes as strings.
@@ -133,6 +136,12 @@ For now, the first version gives you basic stuff. But there will be much more:
 2. Each change needs `npm run build`
 3. You can link the lib locally by `npm link`
 4. If you want to build your version, find all the `buildo-begins` names and replace them with yours.
+
+The Buildo tool is supposed to be not only ready to use product but also the source code for learning purposes and for further derived tools.
+
+The code is structured into token types directories and general-purpose functionality in the root directory. Each ts file is separate functionality, some of them have to be triggered in order like when issuing the token.
+
+For now, some of the code is copied across token directories, and some of the functionality is almost the same for each token type. This is done for a purpose, to keep the logic for one token in one place and give the possibility for other developers to copy parts of the code without thinking much about what is where. It is also to make the learning path simpler. This may change in the future.
 
 ### Real live examples that use a similar approach: 
 

@@ -16,7 +16,7 @@ import {
   shortChainId,
   builtInSC,
   commonOpertationsGasLimit,
-  esdtTokenSpecialRoles,
+  nftTokenSpecialRoles,
 } from '../config';
 
 type OperationType = 'set' | 'unset';
@@ -42,14 +42,14 @@ const promptQuestions = (type: OperationType): PromptObject[] => [
     message: `Please choose special roles to ${
       type === 'set' ? 'assign' : 'remove'
     }.\n`,
-    choices: esdtTokenSpecialRoles.map((property) => ({
+    choices: nftTokenSpecialRoles.map((property) => ({
       title: property,
       value: property,
     })),
   },
 ];
 
-export const toggleSpecialRolesEsdt = async (type: OperationType) => {
+export const toggleSpecialRolesNft = async (type: OperationType) => {
   try {
     const { ticker, address, specialRoles } = await prompts(
       promptQuestions(type)
@@ -69,7 +69,7 @@ export const toggleSpecialRolesEsdt = async (type: OperationType) => {
       new AddressValue(new Address(address.trim())),
     ];
 
-    for (const role of esdtTokenSpecialRoles) {
+    for (const role of nftTokenSpecialRoles) {
       if (specialRoles.includes(role)) {
         args.push(BytesValue.fromUTF8(role));
       }

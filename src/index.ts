@@ -20,17 +20,21 @@ import { transferOwnershipEsdt } from './esdt/transfer-ownership-esdt';
 import { wipeEsdt } from './esdt/wipe-esdt';
 import { converters } from './converters';
 import { issueSft } from './sft/issue-sft';
-import { setSpecialRolesSft } from './sft/set-special-roles-sft';
+import { toggleSpecialRolesSft } from './sft/toggle-special-roles-sft';
 import { createSft } from './sft/create-sft';
 import { issueNft } from './nft/issue-nft';
-import { setSpecialRolesNft } from './nft/set-special-roles-nft';
+import { toggleSpecialRolesNft } from './nft/toggle-special-roles-nft';
 import { createNft } from './nft/create-nft';
 import { claimDeveloperRewards } from './claim-dev-rewards';
 import { changeOwnerAddress } from './change-owner-address';
 import { issueMetaEsdt } from './meta-esdt/issue-meta-esdt';
-import { setSpecialRolesMetaEsdt } from './meta-esdt/set-special-roles-meta-esdt';
+import { toggleSpecialRolesMetaEsdt } from './meta-esdt/toggle-special-roles-meta-esdt';
 import { createMetaEsdt } from './meta-esdt/create-meta-esdt';
 import { accountStore } from './account-store';
+import { changePropertiesEsdt } from './esdt/change-properties-esdt';
+import { changePropertiesNft } from './nft/change-properties-nft';
+import { changePropertiesSft } from './sft/change-properties-sft';
+import { changePropertiesMetaEsdt } from './meta-esdt/change-properties-meta-esdt';
 
 interface CommandData {
   name: string;
@@ -129,6 +133,12 @@ const commands: Record<string, CommandData[]> = {
         "The manager of an ESDT token may transfer the management rights to another Account. This operation requires that the 'canChangeOwner' is set to true.",
     },
     {
+      name: 'change-properties-esdt',
+      fn: changePropertiesEsdt,
+      description:
+        "Change ESDT token properties added when issuing the token, the 'canUpgrade' property has to be previously assigned",
+    },
+    {
       name: 'send-esdt',
       fn: sendEsdt,
       description: 'Send ESDT tokens',
@@ -142,14 +152,25 @@ const commands: Record<string, CommandData[]> = {
     },
     {
       name: 'set-special-roles-sft',
-      fn: setSpecialRolesSft,
+      fn: () => toggleSpecialRolesSft('set'),
       description: 'Set special roles for SFT',
+    },
+    {
+      name: 'unset-special-roles-sft',
+      fn: () => toggleSpecialRolesSft('unset'),
+      description: 'Unset special roles for SFT',
     },
     {
       name: 'create-sft',
       fn: createSft,
       description:
         'Create a new SFT with initial quantity, assets, attributes, etc.',
+    },
+    {
+      name: 'change-properties-sft',
+      fn: changePropertiesSft,
+      description:
+        "Change SFT token properties added when issuing the token, the 'canUpgrade' property has to be previously assigned",
     },
     {
       name: 'send-sft',
@@ -165,13 +186,24 @@ const commands: Record<string, CommandData[]> = {
     },
     {
       name: 'set-special-roles-nft',
-      fn: setSpecialRolesNft,
+      fn: () => toggleSpecialRolesNft('set'),
       description: 'Set special roles for NFT',
+    },
+    {
+      name: 'unset-special-roles-nft',
+      fn: () => toggleSpecialRolesNft('unset'),
+      description: 'Unset special roles for NFT',
     },
     {
       name: 'create-nft',
       fn: createNft,
       description: 'Create a new NFT with assets, attributes, etc.',
+    },
+    {
+      name: 'change-properties-nft',
+      fn: changePropertiesNft,
+      description:
+        "Change NFT token properties added when issuing the token, the 'canUpgrade' property has to be previously assigned",
     },
     {
       name: 'send-nft',
@@ -187,14 +219,25 @@ const commands: Record<string, CommandData[]> = {
     },
     {
       name: 'set-special-roles-meta-esdt',
-      fn: setSpecialRolesMetaEsdt,
+      fn: () => toggleSpecialRolesMetaEsdt('set'),
       description: 'Set special roles for Meta ESDT',
+    },
+    {
+      name: 'unset-special-roles-meta-esdt',
+      fn: () => toggleSpecialRolesMetaEsdt('unset'),
+      description: 'Unset special roles for Meta ESDT',
     },
     {
       name: 'create-meta-esdt',
       fn: createMetaEsdt,
       description:
         'Create a new Meta ESDT with initial quantity, assets, attributes, etc.',
+    },
+    {
+      name: 'change-properties-meta-esdt',
+      fn: changePropertiesMetaEsdt,
+      description:
+        "Change Meta ESDT token properties added when issuing the token, the 'canUpgrade' property has to be previously assigned",
     },
     {
       name: 'send-meta-esdt',
@@ -251,7 +294,12 @@ if (
   }
 
   availableCommands =
-    availableCommands + chalk.blue('--version (-v)\n--help (-h)');
+    availableCommands +
+    `${chalk.underline(
+      `Check version and list commands (example: buildo-begins ${chalk.bold(
+        '--version'
+      )})`
+    )}\n\n${chalk.blue('--version (-v)\n--help (-h)')}`;
 
   console.log(
     `\n${chalk.bold(
