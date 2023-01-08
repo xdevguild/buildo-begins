@@ -19,6 +19,7 @@ esbuild
       'axios',
       'bignumber.js',
       'keccak',
+      'chalk',
     ],
   })
   .catch(() => process.exit(1));

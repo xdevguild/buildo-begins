@@ -16,10 +16,12 @@ import {
   shortChainId,
   builtInSC,
   commonOpertationsGasLimit,
-  sftTokenSpecialRoles,
+  esdtTokenSpecialRoles,
 } from '../config';
 
-const promptQuestions: PromptObject[] = [
+type OperationType = 'set' | 'unset';
+
+const promptQuestions = (type: OperationType): PromptObject[] => [
   {
     type: 'text',
     name: 'ticker',
@@ -29,24 +31,29 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message:
-      'Please provide the address to assign the role. Can be also yours\n',
+    message: `Please provide the address ${
+      type === 'set' ? 'to assign' : 'with'
+    } the role.\n`,
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
     type: 'multiselect',
     name: 'specialRoles',
-    message: 'Please choose special roles to assign.\n',
-    choices: sftTokenSpecialRoles.map((property) => ({
+    message: `Please choose special roles to ${
+      type === 'set' ? 'assign' : 'remove'
+    }.\n`,
+    choices: esdtTokenSpecialRoles.map((property) => ({
       title: property,
       value: property,
     })),
   },
 ];
 
-export const setSpecialRolesMetaEsdt = async () => {
+export const toggleSpecialRolesEsdt = async (type: OperationType) => {
   try {
-    const { ticker, address, specialRoles } = await prompts(promptQuestions);
+    const { ticker, address, specialRoles } = await prompts(
+      promptQuestions(type)
+    );
 
     if (!ticker || !address) {
       console.log('You have to provide the ticker and address!');
@@ -62,14 +69,18 @@ export const setSpecialRolesMetaEsdt = async () => {
       new AddressValue(new Address(address.trim())),
     ];
 
-    for (const role of sftTokenSpecialRoles) {
+    for (const role of esdtTokenSpecialRoles) {
       if (specialRoles.includes(role)) {
         args.push(BytesValue.fromUTF8(role));
       }
     }
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('setSpecialRole'))
+      .setFunction(
+        new ContractFunction(
+          type === 'set' ? 'setSpecialRole' : 'unSetSpecialRole'
+        )
+      )
       .setArgs(args)
       .build();
 

@@ -23,7 +23,8 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'initialQuantity',
-    message: 'Please provide the initial quantity\n',
+    message:
+      'Please provide the initial quantity Please provide the initial supply (remember to take into consideration the number of decimals)\n',
     validate: (value) =>
       !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },

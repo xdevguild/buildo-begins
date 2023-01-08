@@ -58,7 +58,8 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'numberOfDecimals',
     message: 'Please provide the number of decimals\n',
-    validate: (value) => (!value ? 'Required!' : true),
+    validate: (value) =>
+      !value || value < 0 ? 'Required non negative number!' : true,
   },
   {
     type: 'multiselect',

@@ -5,7 +5,7 @@
   },
   "type": "module",
   "types": "build/types",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "MultiversX (Elrond) blockchain CLI helper tools",
   "main": "build/index.js",
   "bin": {
@@ -52,6 +52,7 @@
     "@elrondnetwork/erdjs-walletcore": "^2.1.0",
     "axios": "^1.2.1",
     "bignumber.js": "^9.1.1",
+    "chalk": "^5.2.0",
     "cosmiconfig": "^8.0.0",
     "keccak": "^3.0.2",
     "ora": "^6.1.2",

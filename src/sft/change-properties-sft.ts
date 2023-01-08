@@ -3,7 +3,6 @@ import { exit } from 'process';
 import {
   Transaction,
   BytesValue,
-  AddressValue,
   Address,
   ContractCallPayloadBuilder,
   ContractFunction,
@@ -16,7 +15,7 @@ import {
   shortChainId,
   builtInSC,
   commonOpertationsGasLimit,
-  sftTokenSpecialRoles,
+  sftNftTokenProperties,
 } from '../config';
 
 const promptQuestions: PromptObject[] = [
@@ -27,29 +26,22 @@ const promptQuestions: PromptObject[] = [
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
-    type: 'text',
-    name: 'address',
-    message:
-      'Please provide the address to assign the role. Can be also yours\n',
-    validate: (value) => (!value ? 'Required!' : true),
-  },
-  {
     type: 'multiselect',
-    name: 'specialRoles',
-    message: 'Please choose special roles to assign.\n',
-    choices: sftTokenSpecialRoles.map((property) => ({
+    name: 'tokenProperties',
+    message: `Please choose a new set of the properties for the token.\n`,
+    choices: sftNftTokenProperties.map((property) => ({
       title: property,
       value: property,
     })),
   },
 ];
 
-export const setSpecialRolesSft = async () => {
+export const changePropertiesSft = async () => {
   try {
-    const { ticker, address, specialRoles } = await prompts(promptQuestions);
+    const { ticker, tokenProperties } = await prompts(promptQuestions);
 
-    if (!ticker || !address) {
-      console.log('You have to provide the ticker and address!');
+    if (!ticker) {
+      console.log('You have to provide the ticker!');
       exit(9);
     }
 
@@ -57,19 +49,21 @@ export const setSpecialRolesSft = async () => {
 
     const { signer, userAccount, provider } = await setup();
 
-    const args: TypedValue[] = [
-      BytesValue.fromUTF8(ticker),
-      new AddressValue(new Address(address.trim())),
-    ];
+    const args: TypedValue[] = [BytesValue.fromUTF8(ticker)];
 
-    for (const role of sftTokenSpecialRoles) {
-      if (specialRoles.includes(role)) {
-        args.push(BytesValue.fromUTF8(role));
+    for (const property of sftNftTokenProperties) {
+      let propertyEnabled = false;
+
+      if (tokenProperties.includes(property)) {
+        propertyEnabled = true;
       }
+
+      args.push(BytesValue.fromUTF8(property));
+      args.push(BytesValue.fromUTF8(propertyEnabled.toString()));
     }
 
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('setSpecialRole'))
+      .setFunction(new ContractFunction('controlChanges'))
       .setArgs(args)
       .build();
 
