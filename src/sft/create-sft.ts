@@ -7,7 +7,7 @@ import {
   ContractFunction,
   TypedValue,
   BigUIntValue,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 import Bignumber from 'bignumber.js';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';

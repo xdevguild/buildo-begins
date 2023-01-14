@@ -1,15 +1,19 @@
 import { accessSync, constants, readFileSync } from 'fs';
 import { exit, cwd } from 'process';
 import prompts, { PromptObject } from 'prompts';
-import { Transaction, TransactionWatcher } from '@elrondnetwork/erdjs';
+import {
+  Transaction,
+  TransactionWatcher,
+  Account,
+  SmartContract,
+  Address,
+} from '@multiversx/sdk-core';
 import ora from 'ora';
 import keccak from 'keccak';
+import { parseUserKey, UserSigner } from '@multiversx/sdk-wallet';
+import { ApiNetworkProvider } from '@multiversx/sdk-network-providers';
 
-import { Account, SmartContract, Address } from '@elrondnetwork/erdjs';
-import { parseUserKey, UserSigner } from '@elrondnetwork/erdjs-walletcore';
-import { ApiNetworkProvider } from '@elrondnetwork/erdjs-network-providers';
-
-import { publicApi, chain, elrondExplorer } from './config';
+import { publicApi, chain, multiversxExplorer } from './config';
 
 const baseDir = cwd();
 
@@ -124,7 +128,7 @@ export const commonTxOperations = async (
 
   console.log(`\nTransaction status: ${txStatus}`);
   console.log(
-    `Transaction link: ${elrondExplorer[chain]}/transactions/${txHash}\n`
+    `Transaction link: ${multiversxExplorer[chain]}/transactions/${txHash}\n`
   );
 };
 

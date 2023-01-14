@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { Mnemonic } from '@elrondnetwork/erdjs-walletcore';
+import { Mnemonic } from '@multiversx/sdk-wallet';
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 

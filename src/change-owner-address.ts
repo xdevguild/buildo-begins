@@ -8,7 +8,7 @@ import {
   Address,
   TypedValue,
   AddressValue,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 import {
   chain,
   shortChainId,

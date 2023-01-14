@@ -5,7 +5,7 @@ import {
   Transaction,
   ESDTTransferPayloadBuilder,
   Address,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 import axios from 'axios';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';

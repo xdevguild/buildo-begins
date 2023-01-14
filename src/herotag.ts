@@ -7,7 +7,7 @@ import {
   TypedValue,
   BytesValue,
   SmartContract,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 
 import axios from 'axios';
 

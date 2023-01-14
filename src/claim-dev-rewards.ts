@@ -6,7 +6,7 @@ import {
   ContractCallPayloadBuilder,
   ContractFunction,
   Address,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 import {
   chain,
   shortChainId,

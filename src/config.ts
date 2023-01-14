@@ -11,9 +11,11 @@ export const chain = customConfig?.config?.chain || 'devnet';
 // Default will be devnet, based on chain value, if the local is chosen you can change the proxy host
 export const publicApi: { [key: string]: string } = {
   local: customConfig?.config?.customApi || 'http://localhost:7950',
-  testnet: customConfig?.config?.customApi || 'https://testnet-api.elrond.com',
-  devnet: customConfig?.config?.customApi || 'https://devnet-api.elrond.com',
-  mainnet: customConfig?.config?.customApi || 'https://api.elrond.com',
+  testnet:
+    customConfig?.config?.customApi || 'https://testnet-api.multiversx.com',
+  devnet:
+    customConfig?.config?.customApi || 'https://devnet-api.multiversx.com',
+  mainnet: customConfig?.config?.customApi || 'https://api.multiversx.com',
 };
 
 export const shortChainId: { [key: string]: string } = {
@@ -22,10 +24,10 @@ export const shortChainId: { [key: string]: string } = {
   mainnet: '1',
 };
 
-export const elrondExplorer: { [key: string]: string } = {
-  devnet: 'https://devnet-explorer.elrond.com',
-  testnet: 'https://testnet-explorer.elrond.com',
-  mainnet: 'https://explorer.elrond.com',
+export const multiversxExplorer: { [key: string]: string } = {
+  devnet: 'https://devnet-explorer.multiversx.com',
+  testnet: 'https://testnet-explorer.multiversx.com',
+  mainnet: 'https://explorer.multiversx.com',
 };
 
 export const esdtTokenProperties = [

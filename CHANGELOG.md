@@ -1,3 +1,9 @@
+### [0.9.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.9.0) (2023-01-14)
+- rebrand to multiversx (continuation)
+    - npm packages are replaced
+    - public api/explorer endpoints are replaced
+- update dependencies
+
 ### [0.8.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.8.0) (2023-01-07)
 - added 
   - `buildo-begins unset-special-roles-esdt`

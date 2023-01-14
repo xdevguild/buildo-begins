@@ -7,7 +7,7 @@ import {
   TypedValue,
   BytesValue,
   TransactionPayload,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 
 import { areYouSureAnswer, setup, commonTxOperations } from './utils';
 import { chain, shortChainId } from './config';
@@ -26,7 +26,7 @@ const getKeyValuesForTx = (keyValuesArr: string[]) => {
     .flat();
 };
 
-// https://docs.elrond.com/developers/account-storage/#transaction-format
+// https://docs.multiversx.com/developers/account-storage/#transaction-format
 const getTotalAdditionalGasLimit = (
   data: TransactionPayload,
   keyValuePairs: string

@@ -116,7 +116,7 @@ Internally Buildo uses the config.ts file, but when you use it as a globally ins
 ```json
 {
   "chain": "devnet",
-  "customApi": "https://devnet-api.elrond.com"
+  "customApi": "https://devnet-api.multiversx.com"
 }
 ```
 

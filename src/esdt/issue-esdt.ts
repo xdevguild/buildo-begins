@@ -11,7 +11,7 @@ import {
   ContractCallPayloadBuilder,
   ContractFunction,
   TypedValue,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import {

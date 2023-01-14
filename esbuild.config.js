@@ -12,9 +12,9 @@ esbuild
     external: [
       'cosmiconfig',
       'prompts',
-      '@elrondnetwork/erdjs',
-      '@elrondnetwork/erdjs-walletcore',
-      '@elrondnetwork/erdjs-network-providers',
+      '@multiversx/sdk-core',
+      '@multiversx/sdk-network-providers',
+      '@multiversx/sdk-wallet',
       'ora',
       'axios',
       'bignumber.js',

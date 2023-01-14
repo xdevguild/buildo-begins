@@ -1,7 +1,7 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 
-import { Address, TokenPayment } from '@elrondnetwork/erdjs';
+import { Address, TokenPayment } from '@multiversx/sdk-core';
 import BigNumber from 'bignumber.js';
 
 enum ConverterType {

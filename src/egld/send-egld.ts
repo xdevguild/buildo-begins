@@ -5,7 +5,7 @@ import {
   Transaction,
   TransactionPayload,
   Address,
-} from '@elrondnetwork/erdjs';
+} from '@multiversx/sdk-core';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
 import { chain, shortChainId } from '../config';
