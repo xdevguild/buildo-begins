@@ -51,8 +51,8 @@ Each command will display a set of self-explanatory prompts.
 #### General operations
 
 - `buildo-begins derive-pem` - derive PEM file from seed phrase
-- `buildo-begins herotag` - create a herotag and assign it to addres and check addresses of existing ones
-- `buildo-begins converters` - a set of converters based on excelent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
+- `buildo-begins herotag` - create a herotag and assign it to address and check addresses of existing ones
+- `buildo-begins converters` - a set of converters based on excellent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
 - `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
 - `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.
