@@ -19,6 +19,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - creating and checking the herotag for wallet address without the xPortal App: https://youtu.be/nvda-zCffck
 - data converters: https://youtu.be/soUq9eX9-0s
 - storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
+- init dapp and smart contract example: https://youtu.be/9J9sJ5kaCJc
 
 ### Related articles
 
