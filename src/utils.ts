@@ -1,4 +1,9 @@
 import { accessSync, constants, readFileSync } from 'fs';
+import decompress from 'decompress';
+import getStream from 'get-stream';
+import got, { ResponseType } from 'got';
+import { pEvent } from 'p-event';
+import path from 'path';
 import { exit, cwd } from 'process';
 import prompts, { PromptObject } from 'prompts';
 import {
@@ -109,27 +114,36 @@ export const commonTxOperations = async (
   signer: UserSigner,
   provider: ApiNetworkProvider
 ) => {
-  tx.setNonce(account.nonce);
-  account.incrementNonce();
-  signer.sign(tx);
-
   const spinner = ora('Processing the transaction...');
-  spinner.start();
 
-  await provider.sendTransaction(tx);
+  try {
+    tx.setNonce(account.nonce);
+    account.incrementNonce();
+    signer.sign(tx);
 
-  const watcher = new TransactionWatcher(provider);
-  const transactionOnNetwork = await watcher.awaitCompleted(tx);
+    spinner.start();
 
-  const txHash = transactionOnNetwork.hash;
-  const txStatus = transactionOnNetwork.status;
+    await provider.sendTransaction(tx);
 
-  spinner.stop();
+    const watcher = new TransactionWatcher(provider);
+    const transactionOnNetwork = await watcher.awaitCompleted(tx);
 
-  console.log(`\nTransaction status: ${txStatus}`);
-  console.log(
-    `Transaction link: ${multiversxExplorer[chain]}/transactions/${txHash}\n`
-  );
+    const txHash = transactionOnNetwork.hash;
+    const txStatus = transactionOnNetwork.status;
+
+    spinner.stop();
+
+    console.log(`\nTransaction status: ${txStatus}`);
+    console.log(
+      `Transaction link: ${multiversxExplorer[chain]}/transactions/${txHash}\n`
+    );
+  } catch (e) {
+    spinner.stop();
+    throw new Error(
+      (e as Error)?.message ||
+        'Something wen wrond when processing the transaction!'
+    );
+  }
 };
 
 export const dnsScAddressForHerotag = (herotag: string) => {
@@ -150,4 +164,46 @@ export const dnsScAddressForHerotag = (herotag: string) => {
   );
 
   return scAddress;
+};
+
+// Based on not maintained: https://github.com/kevva/download (simplified)
+export const downloadAndExtract = (
+  uri: string,
+  output: string | null,
+  options: Record<string, unknown>
+) => {
+  const gotOptions = {
+    responseType: 'buffer' as unknown as ResponseType,
+    https: {
+      rejectUnauthorized: process.env.npm_config_strict_ssl !== 'false',
+    },
+  };
+
+  const stream = got.stream(uri, gotOptions);
+
+  const promise = pEvent(stream, 'response')
+    .then((res) => {
+      return Promise.all([
+        getStream(stream, { encoding: 'buffer' as BufferEncoding }),
+        res,
+      ]);
+    })
+    .then((result) => {
+      const [data] = result;
+
+      if (!output) {
+        return decompress(data, options);
+      }
+
+      const filename = options.filename;
+      const outputFilepath = path.join(output, filename as string);
+
+      return decompress(data, path.dirname(outputFilepath), options);
+    });
+
+  return {
+    then: promise.then.bind(promise),
+    catch: promise.catch.bind(promise),
+    ...stream,
+  };
 };

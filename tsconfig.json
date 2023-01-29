@@ -6,9 +6,10 @@
     "declaration": true,
     "declarationDir": "build/types",
     "emitDeclarationOnly": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "types": [
       "node"
     ]

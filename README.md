@@ -16,14 +16,14 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - issuing and creating an SFTs: https://youtu.be/ozOYli4qQx4
 - issuing and creating an NFTs: https://youtu.be/B4vahursgkQ
 - issuing and creating Meta ESDTs: https://youtu.be/dsRswHhIteU
-- creating and checking the herotag for wallet address without the Maiar App: https://youtu.be/nvda-zCffck
+- creating and checking the herotag for wallet address without the xPortal App: https://youtu.be/nvda-zCffck
 - data converters: https://youtu.be/soUq9eX9-0s
 - storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
 
 ### Related articles
 
-- [Setup erdjs and issue ESDT](https://elrond-dev-guild.gitbook.io/scrolls/erdjs/how-tos/setup-erdjs-and-issue-esdt-token)
-- [Set special roles for ESDT tokens](https://elrond-dev-guild.gitbook.io/scrolls/erdjs/how-tos/set-special-roles-for-esdt-token)
+- [Setup JS SDK and issue ESDT](https://elrond-dev-guild.gitbook.io/scrolls/js-sdk/how-tos/setup-js-sdk-and-issue-esdt-token)
+- [Set special roles for ESDT tokens](https://elrond-dev-guild.gitbook.io/scrolls/js-sdk/how-tos/set-special-roles-for-esdt-token)
 
 ### With what he will help you (not all is available yet!):
 
@@ -125,7 +125,7 @@ Internally Buildo uses the config.ts file, but when you use it as a globally ins
 For now, the first version gives you basic stuff. But there will be much more:
 
 - examples for interaction with smart contracts,
-- proper erdjs interactions,
+- proper JS SDK interactions,
 - ABI usage,
 - custom operations on API
 - Gandalf's wizarding shit and stuff, you will be amazed for sure!
@@ -150,6 +150,6 @@ For now, some of the code is copied across token directories, and some of the fu
 
 ### Other tools:
 
-- [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the MultiversX (Elrond) blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the MultiversX (Elrond) blockchain!
+- [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the MultiversX blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the MultiversX blockchain!
 - [Elven Tools](https://www.elven.tools) - The PFP NFT toolset: NFT minter smart contract (decentralized way of minting), minter Nextjs dapp (interaction on the frontend side), CLI tool (deploy, configuration, interaction).
 - [Next.js Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - general purpose Next.js dapp template for interacting with MultiversX blockchain

@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import packageJson from '../package.json';
 
 import { derivePem } from './derive-pem';
+import { init } from './init';
 import { sendEsdt } from './esdt/send-esdt';
 import { issueEsdt } from './esdt/issue-esdt';
 import { mintBurnEsdt } from './esdt/mint-burn-esdt';
@@ -48,6 +49,12 @@ const commands: Record<string, CommandData[]> = {
       name: 'derive-pem',
       fn: derivePem,
       description: 'Derive PEM file from seed phrase',
+    },
+    {
+      name: 'init',
+      fn: init,
+      description:
+        'Initialize project (it can be dapp, example smart contract etc.)',
     },
     {
       name: 'herotag',

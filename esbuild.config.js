@@ -20,6 +20,11 @@ esbuild
       'bignumber.js',
       'keccak',
       'chalk',
+      'cross-spawn',
+      'p-event',
+      'decompress',
+      'get-stream',
+      'got',
     ],
   })
   .catch(() => process.exit(1));

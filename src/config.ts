@@ -76,3 +76,11 @@ export const issueTokenPayment = '0.05';
 export const commonOpertationsGasLimit = 60_000_000;
 export const commonBuiltInOpertationsGasLimit = 6_000_000;
 export const specialOpertationsGasLimit = 3_000_000;
+
+// Resources to download (URLs)
+export const downloadUrls: Record<string, string> = {
+  nextJsDapp:
+    'https://github.com/xdevguild/nextjs-dapp-template/archive/refs/heads/main.zip',
+  piggyBankExampleSc:
+    'https://github.com/xdevguild/multiversx-simple-sc/archive/refs/heads/master.zip',
+};
