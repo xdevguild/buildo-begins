@@ -59,6 +59,8 @@ Each command will display a set of self-explanatory prompts.
 
 #### ESDT operations
 
+To create fungible ESDT keep the order of operations: `issue-esdt` -> `set-special-roles-esdt`
+
 - `buildo-begins issue-esdt` - issue new ESDT token
 - `buildo-begins set-special-roles-esdt` - set special ESDT roles
 - `buildo-begins unset-special-roles-esdt` - unset special ESDT roles
@@ -139,7 +141,7 @@ For now, the first version gives you basic stuff. But there will be much more:
 
 The Buildo tool is supposed to be not only ready to use product but also the source code for learning purposes and for further derived tools.
 
-The code is structured into token types directories and general-purpose functionality in the root directory. Each ts file is separate functionality, some of them have to be triggered in order like when issuing the token.
+The code is structured into token types directories and general-purpose functionality in the root directory. Each ts file is separate functionality, some of them have to be triggered in proper order like when issuing the token.
 
 For now, some of the code is copied across token directories, and some of the functionality is almost the same for each token type. This is done for a purpose, to keep the logic for one token in one place and give the possibility for other developers to copy parts of the code without thinking much about what is where. It is also to make the learning path simpler. This may change in the future.
 

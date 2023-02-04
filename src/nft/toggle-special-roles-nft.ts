@@ -43,8 +43,9 @@ const promptQuestions = (type: OperationType): PromptObject[] => [
       type === 'set' ? 'assign' : 'remove'
     }.\n`,
     choices: nftTokenSpecialRoles.map((property) => ({
-      title: property,
-      value: property,
+      title: property.name,
+      value: property.name,
+      description: property.description,
     })),
   },
 ];
@@ -70,8 +71,8 @@ export const toggleSpecialRolesNft = async (type: OperationType) => {
     ];
 
     for (const role of nftTokenSpecialRoles) {
-      if (specialRoles.includes(role)) {
-        args.push(BytesValue.fromUTF8(role));
+      if (specialRoles.includes(role.name)) {
+        args.push(BytesValue.fromUTF8(role.name));
       }
     }
 

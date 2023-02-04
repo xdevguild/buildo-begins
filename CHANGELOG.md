@@ -1,3 +1,8 @@
+### [0.11.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.11.0) (2023-02-04)
+- added `ESDTTransferRole` for ESDT (fungible)
+- dependencies update
+- descriptions for token properties and special roles selectors
+
 ### [0.10.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.10.0) (2023-01-29)
 - new `buildo-begins init` functionality. For now, it lets to initialize an example smart contract and NextJS dapp template. There will be more in the future.
 - dependencies updates

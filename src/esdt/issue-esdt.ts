@@ -75,8 +75,9 @@ const promptQuestions: PromptObject[] = [
     name: 'tokenProperties',
     message: 'Please choose token properties.\n',
     choices: esdtTokenProperties.map((property) => ({
-      title: property,
-      value: property,
+      title: property.name,
+      value: property.name,
+      description: property.description,
     })),
   },
 ];
@@ -109,11 +110,11 @@ export const issueEsdt = async () => {
     for (const property of esdtTokenProperties) {
       let propertyEnabled = false;
 
-      if (tokenProperties.includes(property)) {
+      if (tokenProperties.includes(property.name)) {
         propertyEnabled = true;
       }
 
-      args.push(BytesValue.fromUTF8(property));
+      args.push(BytesValue.fromUTF8(property.name));
       args.push(BytesValue.fromUTF8(propertyEnabled.toString()));
     }
 
