@@ -19,6 +19,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - creating and checking the herotag for wallet address without the xPortal App: https://youtu.be/nvda-zCffck
 - data converters: https://youtu.be/soUq9eX9-0s
 - storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
+- init dapp and smart contract example: https://youtu.be/9J9sJ5kaCJc
 
 ### Related articles
 
@@ -51,6 +52,7 @@ Each command will display a set of self-explanatory prompts.
 #### General operations
 
 - `buildo-begins derive-pem` - derive PEM file from seed phrase
+- `buildo-begins init` - initialize the NextJS dapp template or simple smart contract for learning purposes
 - `buildo-begins herotag` - create a herotag and assign it to address and check addresses of existing ones
 - `buildo-begins converters` - a set of converters based on excellent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
