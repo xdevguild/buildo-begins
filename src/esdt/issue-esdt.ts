@@ -2,7 +2,7 @@ import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 import Bignumber from 'bignumber.js';
 import {
-  TokenPayment,
+  TokenTransfer,
   Transaction,
   BytesValue,
   U32Value,
@@ -66,7 +66,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'initialSupply',
     message:
-      'Please provide the initial supply (remember to take into consideration the number of decimals)\n',
+      'Please provide the initial supply (remember to take into consideration the number of decimals for example 100 with 2 decimal places will be 10000)\n',
     validate: (value) =>
       !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },
@@ -98,7 +98,7 @@ export const issueEsdt = async () => {
 
     const { signer, userAccount, provider } = await setup();
 
-    const payment = TokenPayment.egldFromAmount(issueTokenPayment);
+    const payment = TokenTransfer.egldFromAmount(issueTokenPayment);
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(name),

@@ -119,7 +119,10 @@ export const commonTxOperations = async (
   try {
     tx.setNonce(account.nonce);
     account.incrementNonce();
-    signer.sign(tx);
+
+    const serialized: Buffer = tx.serializeForSigning();
+    const signature: Buffer = await signer.sign(serialized);
+    tx.applySignature(signature);
 
     spinner.start();
 

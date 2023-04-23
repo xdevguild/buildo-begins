@@ -33,7 +33,8 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'supply',
-    message: 'Please provide the supply\n',
+    message: (prev, values) =>
+      `Please provide the amount to ${values.type} (Remember about decimal places)\n`,
     validate: (value) =>
       !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },

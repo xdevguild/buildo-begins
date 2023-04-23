@@ -1,3 +1,7 @@
+### [0.12.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.12.0) (2023-04-23)
+- update dependencies including `sdk-core` and `sdk-wallet`
+- code ajustments because of changes in core dependencies
+
 ### [0.11.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.11.0) (2023-02-04)
 - added `ESDTTransferRole` for ESDT (fungible)
 - dependencies update

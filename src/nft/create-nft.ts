@@ -11,7 +11,7 @@ import {
 import Bignumber from 'bignumber.js';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
-import { chain, shortChainId, specialOpertationsGasLimit } from '../config';
+import { chain, shortChainId, nftCreateOpertationsGasLimit } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
@@ -92,7 +92,7 @@ export const createNft = async () => {
     const tx = new Transaction({
       data,
       gasLimit:
-        specialOpertationsGasLimit +
+        nftCreateOpertationsGasLimit +
         data.length() * 1500 +
         (attributes?.length || 0 + hash?.length || 0) * 50000,
       receiver: signer.getAddress(),

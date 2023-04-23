@@ -1,10 +1,10 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 import {
-  TokenPayment,
-  Transaction,
-  ESDTNFTTransferPayloadBuilder,
+  TokenTransfer,
   Address,
+  TransferTransactionsFactory,
+  GasEstimator,
 } from '@multiversx/sdk-core';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the erd address (receiver)\n',
+    message: 'Please provide the receiver address\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
@@ -60,18 +60,15 @@ export const sendNft = async () => {
       collectionTicker !== undefined &&
       collectionTicker !== null
     ) {
-      const payment = TokenPayment.nonFungible(collectionTicker, nonce);
-      const data = new ESDTNFTTransferPayloadBuilder()
-        .setPayment(payment)
-        .setDestination(new Address(address.trim()))
-        .build();
+      const transfer = TokenTransfer.nonFungible(collectionTicker, nonce);
 
-      const tx = new Transaction({
+      const factory = new TransferTransactionsFactory(new GasEstimator());
+
+      const tx = factory.createESDTNFTTransfer({
+        tokenTransfer: transfer,
         nonce,
-        data,
-        gasLimit: 50000 + 1500 * data.length() + 300000,
-        receiver: signer.getAddress(), // Same as sender address!
         sender: signer.getAddress(),
+        destination: new Address(address.trim()),
         chainID: shortChainId[chain],
       });
 

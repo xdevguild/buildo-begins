@@ -1,9 +1,9 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 import {
-  TokenPayment,
-  Transaction,
-  ESDTTransferPayloadBuilder,
+  TokenTransfer,
+  GasEstimator,
+  TransferTransactionsFactory,
   Address,
 } from '@multiversx/sdk-core';
 import axios from 'axios';
@@ -15,7 +15,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the erd address (receiver)\n',
+    message: 'Please provide the receiver address\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
@@ -62,18 +62,18 @@ export const sendEsdt = async () => {
     const numDecimals = esdtOnNetwork?.data?.decimals;
 
     if (numDecimals !== undefined && numDecimals !== null) {
-      const payment = TokenPayment.fungibleFromAmount(
+      const transfer = TokenTransfer.fungibleFromAmount(
         token,
         amount,
         numDecimals
       );
-      const data = new ESDTTransferPayloadBuilder().setPayment(payment).build();
 
-      const tx = new Transaction({
-        data,
-        gasLimit: 50000 + 1500 * data.length() + 300000,
-        receiver: new Address(address.trim()),
+      const factory = new TransferTransactionsFactory(new GasEstimator());
+
+      const tx = factory.createESDTTransfer({
+        tokenTransfer: transfer,
         sender: signer.getAddress(),
+        receiver: new Address(address.trim()),
         chainID: shortChainId[chain],
       });
 

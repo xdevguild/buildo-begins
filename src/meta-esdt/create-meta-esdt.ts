@@ -11,7 +11,7 @@ import {
 import Bignumber from 'bignumber.js';
 
 import { areYouSureAnswer, setup, commonTxOperations } from '../utils';
-import { chain, shortChainId, specialOpertationsGasLimit } from '../config';
+import { chain, shortChainId, nftCreateOpertationsGasLimit } from '../config';
 
 const promptQuestions: PromptObject[] = [
   {
@@ -24,7 +24,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'initialQuantity',
     message:
-      'Please provide the initial quantity Please provide the initial supply (remember to take into consideration the number of decimals)\n',
+      'Please provide the initial supply (remember to take into consideration the number of decimals for example 100 with 2 decimal places will be 10000)\n',
     validate: (value) =>
       !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },
@@ -76,7 +76,7 @@ export const createMetaEsdt = async () => {
 
     const tx = new Transaction({
       data,
-      gasLimit: specialOpertationsGasLimit + data.length() * 1500 + 50000,
+      gasLimit: nftCreateOpertationsGasLimit + data.length() * 1500 + 50000,
       receiver: signer.getAddress(),
       sender: signer.getAddress(),
       value: 0,

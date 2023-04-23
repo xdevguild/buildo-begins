@@ -39,7 +39,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the address to freeze/unfreeze\n',
+    message: (prev, values) => `Please provide the address to ${values.type}\n`,
     validate: (value) => (!value ? 'Required!' : true),
   },
 ];

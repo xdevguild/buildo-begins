@@ -142,7 +142,8 @@ export const issueTokenPayment = '0.05';
 
 export const commonOpertationsGasLimit = 60_000_000;
 export const commonBuiltInOpertationsGasLimit = 6_000_000;
-export const specialOpertationsGasLimit = 3_000_000;
+export const nftCreateOpertationsGasLimit = 3_000_000;
+export const specialOpertationsGasLimit = 300_000;
 
 // Resources to download (URLs)
 export const downloadUrls: Record<string, string> = {

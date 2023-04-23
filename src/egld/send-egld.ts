@@ -1,7 +1,7 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 import {
-  TokenPayment,
+  TokenTransfer,
   Transaction,
   TransactionPayload,
   Address,
@@ -14,7 +14,7 @@ const promptQuestions: PromptObject[] = [
   {
     type: 'text',
     name: 'address',
-    message: 'Please provide the erd address (receiver)\n',
+    message: 'Please provide the receiver address\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
   {
@@ -47,7 +47,7 @@ export const sendEgld = async () => {
 
     const { signer, userAccount, provider } = await setup();
 
-    const payment = TokenPayment.egldFromAmount(amount);
+    const payment = TokenTransfer.egldFromAmount(amount);
 
     const data = new TransactionPayload(msg || '');
 

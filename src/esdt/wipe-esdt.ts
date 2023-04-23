@@ -29,7 +29,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'address',
     message:
-      'Please provide the address to from which the token will be wiped\n',
+      'Please provide the frozen address from which the token will be wiped\n',
     validate: (value) => (!value ? 'Required!' : true),
   },
 ];

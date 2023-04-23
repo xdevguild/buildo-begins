@@ -3,13 +3,19 @@
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
-  "type": "module",
-  "types": "build/types",
   "version": "0.11.0",
   "description": "MultiversX blockchain CLI helper tools (protocol, API and smart contracts interaction, also helper tools)",
-  "main": "build/index.js",
   "bin": {
     "buildo-begins": "./build/index.js"
+  },
+  "type": "module",
+  "main": "build/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "default": "./build/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "rimraf build && node ./esbuild.config.js && tsc",
@@ -35,36 +41,36 @@
     "api"
   ],
   "devDependencies": {
-    "@types/cross-spawn": "^6.0.2",
-    "@types/decompress": "^4.2.4",
+    "@types/cross-spawn": "6.0.2",
+    "@types/decompress": "4.2.4",
     "@types/keccak": "3.0.1",
-    "@types/node": "18.11.18",
-    "@types/prompts": "2.4.2",
-    "@typescript-eslint/eslint-plugin": "5.50.0",
-    "@typescript-eslint/parser": "5.50.0",
-    "esbuild": "0.17.5",
-    "eslint": "8.33.0",
-    "eslint-config-prettier": "8.6.0",
+    "@types/node": "18.16.0",
+    "@types/prompts": "2.4.4",
+    "@typescript-eslint/eslint-plugin": "5.59.0",
+    "@typescript-eslint/parser": "5.59.0",
+    "esbuild": "0.17.18",
+    "eslint": "8.39.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.3",
-    "rimraf": "4.1.2",
-    "typescript": "4.9.5"
+    "prettier": "2.8.7",
+    "rimraf": "5.0.0",
+    "typescript": "5.0.4"
   },
   "dependencies": {
-    "@multiversx/sdk-core": "11.2.0",
-    "@multiversx/sdk-network-providers": "1.3.0",
-    "@multiversx/sdk-wallet": "2.1.3",
-    "axios": "1.3.2",
+    "@multiversx/sdk-core": "12.1.1",
+    "@multiversx/sdk-network-providers": "1.4.0",
+    "@multiversx/sdk-wallet": "4.0.0",
+    "axios": "1.3.6",
     "bignumber.js": "9.1.1",
     "chalk": "5.2.0",
-    "cosmiconfig": "8.0.0",
-    "cross-spawn": "^7.0.3",
-    "decompress": "^4.2.1",
-    "get-stream": "^6.0.1",
-    "got": "^12.5.3",
+    "cosmiconfig": "8.1.3",
+    "cross-spawn": "7.0.3",
+    "decompress": "4.2.1",
+    "get-stream": "6.0.1",
+    "got": "12.6.0",
     "keccak": "3.0.3",
-    "ora": "6.1.2",
-    "p-event": "^5.0.1",
+    "ora": "6.3.0",
+    "p-event": "5.0.1",
     "prompts": "2.4.2"
   }
 }

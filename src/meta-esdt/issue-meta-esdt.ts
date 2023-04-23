@@ -1,7 +1,7 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 import {
-  TokenPayment,
+  TokenTransfer,
   Transaction,
   BytesValue,
   Address,
@@ -90,7 +90,7 @@ export const issueMetaEsdt = async () => {
 
     const { signer, userAccount, provider } = await setup();
 
-    const payment = TokenPayment.egldFromAmount(issueTokenPayment);
+    const payment = TokenTransfer.egldFromAmount(issueTokenPayment);
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(name),

@@ -1,7 +1,7 @@
 import prompts, { PromptObject } from 'prompts';
 import { exit } from 'process';
 
-import { Address, TokenPayment } from '@multiversx/sdk-core';
+import { Address, TokenTransfer } from '@multiversx/sdk-core';
 import BigNumber from 'bignumber.js';
 
 enum ConverterType {
@@ -146,13 +146,13 @@ const base64ToDecimal = (inputValue: string) => {
 };
 
 const amountToDenominated = (inputValue: string) => {
-  const balance = TokenPayment.egldFromAmount(inputValue);
+  const balance = TokenTransfer.egldFromAmount(inputValue);
   console.log('\nEGLD amount to denominated amount result:');
   console.log(`${balance.toString()}\n`);
 };
 
 const denominatedToAmount = (inputValue: string) => {
-  const balance = TokenPayment.egldFromBigInteger(inputValue);
+  const balance = TokenTransfer.egldFromBigInteger(inputValue);
   console.log('\nEGLD denominated amount to amount result:');
   console.log(`${balance.toPrettyString()}\n`);
 };
