@@ -38,7 +38,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 
 ### How to work with Buildo:
 
-1. Install globally `npm install buildo-begins -g`
+1. Install globally `npm install buildo-begins -g` or you can also run commands with npx, for example `npx buildo-begins issue-esdt`
 2. Derive the pem from seed phrase: `buildo-begins derive-pem`
 3. The walletKey.pem file will be created (**Be careful with this file when working with the mainnet. Please don't share it with anyone!**)
 4. Check the commands with `buildo-begins --help`
