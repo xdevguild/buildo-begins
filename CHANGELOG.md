@@ -1,3 +1,7 @@
+### [0.13.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.13.0) (2023-06-11)
+- add transaction decoder, check the [README.md](https://github.com/xdevguild/buildo-begins#general-operations) for more details
+- update dependencies
+
 ### [0.12.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.12.0) (2023-04-23)
 - update dependencies including `sdk-core` and `sdk-wallet`
 - code ajustments because of changes in core dependencies

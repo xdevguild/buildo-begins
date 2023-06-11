@@ -3,7 +3,7 @@
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "MultiversX blockchain CLI helper tools (protocol, API and smart contracts interaction, also helper tools)",
   "bin": {
     "buildo-begins": "./build/index.js"
@@ -11,10 +11,7 @@
   "type": "module",
   "main": "build/index.js",
   "exports": {
-    ".": {
-      "import": "./build/index.js",
-      "default": "./build/index.js"
-    },
+    ".": "./build/index.js",
     "./package.json": "./package.json"
   },
   "scripts": {
@@ -44,32 +41,33 @@
     "@types/cross-spawn": "6.0.2",
     "@types/decompress": "4.2.4",
     "@types/keccak": "3.0.1",
-    "@types/node": "18.16.0",
+    "@types/node": "20.3.0",
     "@types/prompts": "2.4.4",
-    "@typescript-eslint/eslint-plugin": "5.59.0",
-    "@typescript-eslint/parser": "5.59.0",
-    "esbuild": "0.17.18",
-    "eslint": "8.39.0",
+    "@typescript-eslint/eslint-plugin": "5.59.9",
+    "@typescript-eslint/parser": "5.59.9",
+    "esbuild": "0.18.0",
+    "eslint": "8.42.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.7",
-    "rimraf": "5.0.0",
-    "typescript": "5.0.4"
+    "prettier": "2.8.8",
+    "rimraf": "5.0.1",
+    "typescript": "5.1.3"
   },
   "dependencies": {
-    "@multiversx/sdk-core": "12.1.1",
+    "@multiversx/sdk-core": "12.2.1",
     "@multiversx/sdk-network-providers": "1.4.0",
-    "@multiversx/sdk-wallet": "4.0.0",
-    "axios": "1.3.6",
+    "@multiversx/sdk-transaction-decoder": "1.0.2",
+    "@multiversx/sdk-wallet": "4.2.0",
+    "axios": "1.4.0",
     "bignumber.js": "9.1.1",
     "chalk": "5.2.0",
-    "cosmiconfig": "8.1.3",
+    "cosmiconfig": "8.2.0",
     "cross-spawn": "7.0.3",
     "decompress": "4.2.1",
     "get-stream": "6.0.1",
     "got": "12.6.0",
     "keccak": "3.0.3",
-    "ora": "6.3.0",
+    "ora": "6.3.1",
     "p-event": "5.0.1",
     "prompts": "2.4.2"
   }

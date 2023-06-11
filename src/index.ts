@@ -36,6 +36,7 @@ import { changePropertiesEsdt } from './esdt/change-properties-esdt';
 import { changePropertiesNft } from './nft/change-properties-nft';
 import { changePropertiesSft } from './sft/change-properties-sft';
 import { changePropertiesMetaEsdt } from './meta-esdt/change-properties-meta-esdt';
+import { decodeTransaction } from './decode-transaction';
 
 interface CommandData {
   name: string;
@@ -84,6 +85,12 @@ const commands: Record<string, CommandData[]> = {
       fn: accountStore,
       description:
         'A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.',
+    },
+    {
+      name: 'decode-transaction',
+      fn: decodeTransaction,
+      description:
+        'You can decode the transaction data by providing a base64 encoded string or just the transaction data string. Plus you will need to provide the sender, receiver, and in case of EGLD transfer also value.',
     },
   ],
   egld: [

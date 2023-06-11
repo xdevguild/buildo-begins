@@ -2,10 +2,6 @@
 
 Meet Buildo. He is here to help you start creating in the MultiversX blockchain ecosystem. Here is where everything begins.
 
-> I'm going on an adventure!
-> The road goes ever on and on. \
-&mdash; Buildo
-
 > Buildo is a cool guy 👊 \
 &mdash; Beniamin Mincu (@beniaminmincu) <a href="https://twitter.com/beniaminmincu/status/1532977949842059264?ref_src=twsrc%5Etfw">June 4, 2022</a></blockquote>
 
@@ -20,11 +16,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - data converters: https://youtu.be/soUq9eX9-0s
 - storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
 - init dapp and smart contract example: https://youtu.be/9J9sJ5kaCJc
-
-### Related articles
-
-- [Setup JS SDK and issue ESDT](https://elrond-dev-guild.gitbook.io/scrolls/js-sdk/how-tos/setup-js-sdk-and-issue-esdt-token)
-- [Set special roles for ESDT tokens](https://elrond-dev-guild.gitbook.io/scrolls/js-sdk/how-tos/set-special-roles-for-esdt-token)
+- decode transaction: https://youtu.be/oxyIhUd5Yxo
 
 ### With what he will help you (not all is available yet!):
 
@@ -43,7 +35,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 3. The walletKey.pem file will be created (**Be careful with this file when working with the mainnet. Please don't share it with anyone!**)
 4. Check the commands with `buildo-begins --help`
 5. Use one of available commands, check them below.
-5. You will get some prompts, fill up the required data
+5. You will get some prompts, fill up the required data (report [here](https://github.com/xdevguild/buildo-begins/issues) if prompts are not clear enough)
 
 ### Available commands for Buildo (there will be more):
 
@@ -58,6 +50,7 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it
 - `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
 - `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.
+- `buildo-begins decode-transaction` - It uses [sdk-transaction-decoder](https://www.npmjs.com/package/@multiversx/sdk-transaction-decoder). It takes base64 encoded data, or data string.
 
 #### ESDT operations
 
@@ -141,16 +134,12 @@ For now, the first version gives you basic stuff. But there will be much more:
 3. You can link the lib locally by `npm link`
 4. If you want to build your version, find all the `buildo-begins` names and replace them with yours.
 
-The Buildo tool is supposed to be not only ready to use product but also the source code for learning purposes and for further derived tools.
+The Buildo tool is supposed to be not only a tool/product but also the source code for learning purposes and further derived tools.
 
-The code is structured into token types directories and general-purpose functionality in the root directory. Each ts file is separate functionality, some of them have to be triggered in proper order like when issuing the token.
+The code is structured into directories based on the token type. The general-purpose functionality is in the root directory. 
+Each Typescript file is a separate functionality. Some of them have to be triggered in proper order, like when issuing the token.
 
-For now, some of the code is copied across token directories, and some of the functionality is almost the same for each token type. This is done for a purpose, to keep the logic for one token in one place and give the possibility for other developers to copy parts of the code without thinking much about what is where. It is also to make the learning path simpler. This may change in the future.
-
-### Real live examples that use a similar approach: 
-
-- [elven-tools](https://github.com/juliancwirko/elven-tools-cli)
-- [nft-art-maker](https://github.com/juliancwirko/nft-art-maker)
+For now, some of the code is copied across token directories, and some functionality is almost the same for some token types. This is done for a purpose, to keep the logic for one token in one place and give the possibility for other developers to copy parts of the code without thinking much about what is where. It is also to make the learning path simpler. It may change in the future.
 
 ### Other tools:
 
