@@ -24,7 +24,7 @@ const promptQuestions: PromptObject[] = [
     type: 'text',
     name: 'initialQuantity',
     message:
-      'Please provide the initial supply (remember to take into consideration the number of decimals for example 100 with 2 decimal places will be 10000)\n',
+      'Please provide the initial supply (remember to take into consideration the number of decimals for example 100 with 2 decimal places will be 10000. You defined them when issuing.)\n',
     validate: (value) =>
       !value || new Bignumber(value).isNaN() ? 'Required number!' : true,
   },

@@ -1,3 +1,7 @@
+### [0.14.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.14.0) (2023-07-08)
+- add multiple token transfer: `buildo-begins multi-transfer`
+- update dependencies
+
 ### [0.13.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.13.0) (2023-06-11)
 - add transaction decoder, check the [README.md](https://github.com/xdevguild/buildo-begins#general-operations) for more details
 - update dependencies

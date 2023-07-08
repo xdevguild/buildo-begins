@@ -17,29 +17,29 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 - storing data under an account as key-value pairs: https://youtu.be/gPVUkOgak1E
 - init dapp and smart contract example: https://youtu.be/9J9sJ5kaCJc
 - decode transaction: https://youtu.be/oxyIhUd5Yxo
+- send multiple ESDTs (FT|NFT|SFT|META) in one transaction: https://youtu.be/6YvT5nHNB8U
 
 ### With what he will help you (not all is available yet!):
 
 1. Deriving PEM files
-2. All tokens-related operations (ESDT, SFT, NFT, Meta ESDT, issuing, sending, management)
-2. Making transactions
-3. Deploying smart contracts
-4. Smart contracts interactions
-5. Common API interactions and filtering
-4. Sky is the limit...
+2. All tokens-related operations (ESDTs (FT|NFT|SFT|META) issuing, sending, management)
+3. Making transactions
+4. Deploying smart contracts
+5. Smart contracts interactions
+6. Common API interactions and filtering
 
 ### How to work with Buildo:
 
 1. Install globally `npm install buildo-begins -g` or you can also run commands with npx, for example `npx buildo-begins issue-esdt`
 2. Derive the pem from seed phrase: `buildo-begins derive-pem`
-3. The walletKey.pem file will be created (**Be careful with this file when working with the mainnet. Please don't share it with anyone!**)
+3. The walletKey.pem file will be created (**Be careful with this file when working with the mainnet. Please don't share it with anyone!**). (Other ways of signing, for example with hardware wallet are in plans)
 4. Check the commands with `buildo-begins --help`
 5. Use one of available commands, check them below.
 5. You will get some prompts, fill up the required data (report [here](https://github.com/xdevguild/buildo-begins/issues) if prompts are not clear enough)
 
 ### Available commands for Buildo (there will be more):
 
-Each command will display a set of self-explanatory prompts.
+Each command will display a set of self-explanatory prompts. If there is something that needs more explanation please let me know about it [here](https://github.com/xdevguild/buildo-begins/issues).
 
 #### General operations
 
@@ -51,8 +51,9 @@ Each command will display a set of self-explanatory prompts.
 - `buildo-begins change-owner-address` - You can change the owner address of the smart contract you own
 - `buildo-begins account-store` - A wallet owner can store key-value pairs by using the built-in function SaveKeyValue which receives any number of key-value pairs.
 - `buildo-begins decode-transaction` - It uses [sdk-transaction-decoder](https://www.npmjs.com/package/@multiversx/sdk-transaction-decoder). It takes base64 encoded data, or data string.
+- `buildo-begins multi-transfer` - You can transfer multiple ESDTs at once (FT, NFT, SFT, meta)
 
-#### ESDT operations
+#### FT ESDT (fungible tokens) operations
 
 To create fungible ESDT keep the order of operations: `issue-esdt` -> `set-special-roles-esdt`
 
@@ -67,18 +68,7 @@ To create fungible ESDT keep the order of operations: `issue-esdt` -> `set-speci
 - `buildo-begins change-properties-esdt` - change ESDT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-esdt` - send ESDT tokens
 
-#### SFT operations (will be more...)
-
-To create SFTs keep the order of operations: `issue-sft` -> `set-special-roles-sft` -> `create-sft`
-
-- `buildo-begins issue-sft` - issue a new SFT collection
-- `buildo-begins set-special-roles-sft` - set special roles for SFT
-- `buildo-begins unset-special-roles-sft` - unset special roles for SFT
-- `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
-- `buildo-begins change-properties-sft` - change SFT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
-- `buildo-begins send-sft` - send SFT tokens
-
-#### NFT operations (will be more...)
+#### NFT ESDT operations (will be more...)
 
 To create NFTs keep the order of operations: `issue-nft` -> `set-special-roles-nft` -> `create-nft`
 
@@ -88,6 +78,17 @@ To create NFTs keep the order of operations: `issue-nft` -> `set-special-roles-n
 - `buildo-begins create-nft` - create a new NFT, assets, attributes, etc.
 - `buildo-begins change-properties-nft` - change NFT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
 - `buildo-begins send-nft` - send NFT token
+
+#### SFT ESDT operations (will be more...)
+
+To create SFTs keep the order of operations: `issue-sft` -> `set-special-roles-sft` -> `create-sft`
+
+- `buildo-begins issue-sft` - issue a new SFT collection
+- `buildo-begins set-special-roles-sft` - set special roles for SFT
+- `buildo-begins unset-special-roles-sft` - unset special roles for SFT
+- `buildo-begins create-sft` - create a new SFT with initial quantity, assets, attributes, etc.
+- `buildo-begins change-properties-sft` - change SFT token properties added when issuing the token, the `canUpgrade` property has to be previously assigned
+- `buildo-begins send-sft` - send SFT tokens
 
 #### Meta ESDT operations (will be more...)
 

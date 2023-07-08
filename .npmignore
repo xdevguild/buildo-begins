@@ -4,5 +4,6 @@ tsconfig.json
 .eslintrc
 .prettierrc
 !build
+build/types
 src
 esbuild.config.js

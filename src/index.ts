@@ -37,6 +37,7 @@ import { changePropertiesNft } from './nft/change-properties-nft';
 import { changePropertiesSft } from './sft/change-properties-sft';
 import { changePropertiesMetaEsdt } from './meta-esdt/change-properties-meta-esdt';
 import { decodeTransaction } from './decode-transaction';
+import { multiTransfer } from './multi-transfer';
 
 interface CommandData {
   name: string;
@@ -91,6 +92,12 @@ const commands: Record<string, CommandData[]> = {
       fn: decodeTransaction,
       description:
         'You can decode the transaction data by providing a base64 encoded string or just the transaction data string. Plus you will need to provide the sender, receiver, and in case of EGLD transfer also value.',
+    },
+    {
+      name: 'multi-transfer',
+      fn: multiTransfer,
+      description:
+        'Send multiple ESDTs (fungible, NFT, SFT, Meta) with one transaction',
     },
   ],
   egld: [
