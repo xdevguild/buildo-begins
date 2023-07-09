@@ -91,6 +91,7 @@ export const multiTransfer = async () => {
             nonce: number;
             ticker: string;
             type: string;
+            decimals: number;
           }>(`${publicApi[chain]}/nfts/${tokenId.trim()}`, {
             headers: {
               'Content-Type': 'application/json',
@@ -101,10 +102,11 @@ export const multiTransfer = async () => {
           nonce = tokenOnNetwork?.data?.nonce;
           collectionTicker = tokenOnNetwork?.data?.ticker;
           tokenType = tokenOnNetwork?.data?.type;
+          decimals = tokenOnNetwork?.data?.decimals;
         }
 
         const checkAmount = () => {
-          if (!amount) {
+          if (!amount || Number.isNaN(parseInt(amount))) {
             console.log(
               'The input data is broken, please double check your input data.'
             );
