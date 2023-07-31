@@ -3,7 +3,7 @@
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
-  "version": "0.14.1",
+  "version": "0.14.2",
   "description": "MultiversX blockchain CLI helper tools (protocol, API and smart contracts interaction, also helper tools)",
   "bin": {
     "buildo-begins": "./build/index.js"
@@ -38,35 +38,33 @@
     "api"
   ],
   "dependencies": {
-    "@multiversx/sdk-core": "12.4.3",
+    "@multiversx/sdk-core": "12.6.0",
     "@multiversx/sdk-network-providers": "1.5.0",
     "@multiversx/sdk-transaction-decoder": "1.0.2",
     "@multiversx/sdk-wallet": "4.2.0",
+    "adm-zip": "0.5.10",
     "axios": "1.4.0",
     "bignumber.js": "9.1.1",
     "chalk": "5.3.0",
     "cosmiconfig": "8.2.0",
     "cross-spawn": "7.0.3",
-    "decompress": "4.2.1",
-    "get-stream": "6.0.1",
-    "got": "12.6.0",
     "keccak": "3.0.3",
-    "ora": "6.3.1",
+    "ora": "7.0.0",
     "p-event": "6.0.0",
     "prompts": "2.4.2"
   },
   "devDependencies": {
+    "@types/adm-zip": "0.5.0",
     "@types/cross-spawn": "6.0.2",
-    "@types/decompress": "4.2.4",
     "@types/keccak": "3.0.1",
-    "@types/node": "20.4.1",
+    "@types/node": "20.4.5",
     "@types/prompts": "2.4.4",
-    "@typescript-eslint/eslint-plugin": "5.61.0",
-    "@typescript-eslint/parser": "5.61.0",
-    "esbuild": "0.18.11",
-    "eslint": "8.44.0",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-prettier": "5.0.0-alpha.2",
+    "@typescript-eslint/eslint-plugin": "6.2.0",
+    "@typescript-eslint/parser": "6.2.0",
+    "esbuild": "0.18.17",
+    "eslint": "8.46.0",
+    "eslint-config-prettier": "8.9.0",
+    "eslint-plugin-prettier": "5.0.0",
     "prettier": "3.0.0",
     "rimraf": "5.0.1",
     "typescript": "5.1.6"

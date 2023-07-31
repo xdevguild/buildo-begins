@@ -1,44 +1,73 @@
 import prompts, { PromptObject } from 'prompts';
 import spawn from 'cross-spawn';
 import { exit } from 'process';
+import path from 'path';
+import fs from 'fs';
+import axios from 'axios';
+import AdmZip from 'adm-zip';
 import { downloadUrls } from './config';
-import { downloadAndExtract } from './utils';
 
 const directoryNameRegex =
   // eslint-disable-next-line no-control-regex
   /^[^\s^\x00-\x1f\\?*:"";<>|/.][^\x00-\x1f\\?*:"";<>|/]*[^\s^\x00-\x1f\\?*:"";<>|/.]+$/g;
 
-const triggerDownload = (
+/** For now it downloads smart contract example and Next.js dapp template */
+const triggerDownloadAndExtract = async (
   dappDirectoryName: string,
   resourceUrl: string,
   isNextJSDapp: boolean
 ) => {
-  downloadAndExtract(resourceUrl, `${process.cwd()}/${dappDirectoryName}`, {
-    extract: true,
-    strip: 1,
-    filename: resourceUrl.split('/').slice(-1)[0],
-  })
-    .then(() => {
-      if (isNextJSDapp) {
-        process.chdir(dappDirectoryName);
-        spawn.sync('npm', ['install'], { stdio: 'inherit' });
-        spawn.sync('cp', ['.env.example', '.env.local'], { stdio: 'inherit' });
-        process.chdir('..');
-      }
-      console.log('\n');
-      console.log(
-        isNextJSDapp
-          ? `The NextJS Dapp template is initialized in the ${dappDirectoryName} directory. Npm dependencies installed. .env.example copied into .env.local - change the settings there.`
-          : `The PiggyBank Smart Contract is initialized in ${dappDirectoryName}. You can now use VS Code and MultiversX IDE extension to configure your workspace and work with it. Check https://youtu.be/y0beoihLppA on how to start!`
-      );
-      console.log('\n');
-    })
-    .catch((err: any) => {
-      if (err)
-        console.log(
-          `Can't download the ${resourceUrl} (${err.statusCode}:${err.statusMessage})`
-        );
+  try {
+    const response = await axios.get(resourceUrl, {
+      responseType: 'arraybuffer',
     });
+
+    const dirPath = `${process.cwd()}/${dappDirectoryName}`;
+
+    const zip = new AdmZip(response.data);
+    const zipEntries = zip.getEntries();
+
+    const mainDirInZipName = isNextJSDapp
+      ? 'nextjs-dapp-template-main'
+      : 'multiversx-simple-sc-master';
+
+    zipEntries.forEach((entry) => {
+      const entryName = entry.entryName;
+      const flattenedEntryName = entryName.replace(mainDirInZipName, '');
+
+      // If the entry is a directory, create it in the extraction directory
+      if (entry.isDirectory) {
+        const targetDir = path.join(dirPath, flattenedEntryName);
+        if (!fs.existsSync(targetDir)) {
+          fs.mkdirSync(targetDir);
+        }
+      } else {
+        // If the entry is a file, extract it to the extraction directory
+        const targetFilePath = path.join(dirPath, flattenedEntryName);
+        fs.writeFileSync(targetFilePath, entry.getData());
+      }
+    });
+
+    if (isNextJSDapp) {
+      process.chdir(dappDirectoryName);
+      spawn.sync('npm', ['install'], { stdio: 'inherit' });
+      spawn.sync('cp', ['.env.example', '.env.local'], { stdio: 'inherit' });
+      process.chdir('..');
+    }
+    console.log('\n');
+    console.log(
+      isNextJSDapp
+        ? `The NextJS Dapp template is initialized in the ${dappDirectoryName} directory. Npm dependencies installed. .env.example copied into .env.local - change the settings there.`
+        : `The PiggyBank Smart Contract is initialized in ${dappDirectoryName}. You can now use VS Code and MultiversX IDE extension to configure your workspace and work with it. Check https://youtu.be/y0beoihLppA on how to start!`
+    );
+    console.log('\n');
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      console.log(
+        `Can't download the ${resourceUrl} (${err.code}:${err.status})`
+      );
+    }
+  }
 };
 
 export const init = async () => {
@@ -88,7 +117,7 @@ export const init = async () => {
 
     const isDappTemplate = resourceType === 'nextJsDapp';
 
-    triggerDownload(
+    await triggerDownloadAndExtract(
       dappDirectoryName,
       downloadUrls[resourceType],
       isDappTemplate
