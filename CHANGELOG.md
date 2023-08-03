@@ -1,3 +1,6 @@
+### [0.14.3](https://github.com/xdevguild/buildo-begins/releases/tag/v0.14.3) (2023-08-03)
+- update dependencies and fix missing ora dependency
+
 ### [0.14.2](https://github.com/xdevguild/buildo-begins/releases/tag/v0.14.2) (2023-07-31)
 - remove got and get-stream libraries, implement replacement
 - update dependencies
