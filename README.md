@@ -39,6 +39,8 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 
 ### Available commands for Buildo (there will be more):
 
+**Not all commands are ready yet, but you will find a complete list of token operations at: [buildo.dev](https://www.buildo.dev)**
+
 Each command will display a set of self-explanatory prompts. If there is something that needs more explanation please let me know about it [here](https://github.com/xdevguild/buildo-begins/issues).
 
 #### General operations
@@ -144,6 +146,7 @@ For now, some of the code is copied across token directories, and some functiona
 
 ### Other tools:
 
+- [buildo.dev](https://www.buildo.dev) - Buildo.dev is a MultiversX app that helps with blockchain interactions, like issuing tokens and querying smart contracts.
 - [elven.js](https://www.elvenjs.com) - Authenticate, sign, and send transactions on the MultiversX blockchain in the browser. No need for bundlers, frameworks, etc. Just import from the static script source, and you are ready to go. One static file to rule it all on the MultiversX blockchain!
 - [Elven Tools](https://www.elven.tools) - The PFP NFT toolset: NFT minter smart contract (decentralized way of minting), minter Nextjs dapp (interaction on the frontend side), CLI tool (deploy, configuration, interaction).
 - [Next.js Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - general purpose Next.js dapp template for interacting with MultiversX blockchain
