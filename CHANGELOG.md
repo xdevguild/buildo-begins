@@ -1,3 +1,7 @@
+### [0.15.0](https://github.com/xdevguild/buildo-begins/releases/tag/v0.15.0) (2023-12-29)
+- add buildo.dev and Piggy Bank example dapps to the init functionality
+- update dependencies
+
 ### [0.14.3](https://github.com/xdevguild/buildo-begins/releases/tag/v0.14.3) (2023-08-03)
 - update dependencies and fix missing ora dependency
 

@@ -44,9 +44,8 @@ const promptQuestions: PromptObject[] = [
 
 export const createMetaEsdt = async () => {
   try {
-    const { ticker, initialQuantity, name, attributes } = await prompts(
-      promptQuestions
-    );
+    const { ticker, initialQuantity, name, attributes } =
+      await prompts(promptQuestions);
 
     if (!initialQuantity || !ticker || !name) {
       console.log(

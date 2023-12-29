@@ -147,8 +147,12 @@ export const specialOpertationsGasLimit = 300_000;
 
 // Resources to download (URLs)
 export const downloadUrls: Record<string, string> = {
-  nextJsDapp:
+  nextJsDappTemplate:
     'https://github.com/xdevguild/nextjs-dapp-template/archive/refs/heads/main.zip',
+  buildoDev:
+    'https://github.com/xdevguild/buildo.dev/archive/refs/heads/main.zip',
   piggyBankExampleSc:
-    'https://github.com/xdevguild/multiversx-simple-sc/archive/refs/heads/master.zip',
+    'https://github.com/xdevguild/piggy-bank-sc/archive/refs/heads/master.zip',
+  piggyBankExampleDapp:
+    'https://github.com/xdevguild/piggy-bank-dapp/archive/refs/heads/main.zip',
 };

@@ -75,9 +75,8 @@ const promptQuestions: PromptObject[] = [
 
 export const issueMetaEsdt = async () => {
   try {
-    const { name, ticker, tokenProperties, numberOfDecimals } = await prompts(
-      promptQuestions
-    );
+    const { name, ticker, tokenProperties, numberOfDecimals } =
+      await prompts(promptQuestions);
 
     if (!name || !ticker || !numberOfDecimals) {
       console.log(

@@ -30,7 +30,7 @@ Meet Buildo. He is here to help you start creating in the MultiversX blockchain 
 
 ### How to work with Buildo:
 
-1. Install globally `npm install buildo-begins -g` or you can also run commands with npx, for example `npx buildo-begins issue-esdt`
+1. Install globally `npm install buildo-begins -g` or you can also run commands with npx, for example `npx buildo-begins@latest issue-esdt`
 2. Derive the pem from seed phrase: `buildo-begins derive-pem`
 3. The walletKey.pem file will be created (**Be careful with this file when working with the mainnet. Please don't share it with anyone!**). (Other ways of signing, for example with hardware wallet are in plans)
 4. Check the commands with `buildo-begins --help`
@@ -46,7 +46,7 @@ Each command will display a set of self-explanatory prompts. If there is somethi
 #### General operations
 
 - `buildo-begins derive-pem` - derive PEM file from seed phrase
-- `buildo-begins init` - initialize the NextJS dapp template or simple smart contract for learning purposes
+- `buildo-begins init` - initialize the NextJS dapp template, Piggy Bank smart contract and dapp for learning purposes or Buildo.dev dapp
 - `buildo-begins herotag` - create a herotag and assign it to address and check addresses of existing ones
 - `buildo-begins converters` - a set of converters based on excellent [MultiversX (Elrond) Converters](http://207.244.241.38/elrond-converters/) but in the CLI, always at hand!
 - `buildo-begins claim-developer-rewards` - Claim dev rewards from your smart contract. You have to use the owner's wallet address (PEM) when calling it

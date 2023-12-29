@@ -56,9 +56,8 @@ const promptQuestions: PromptObject[] = [
 
 export const createNft = async () => {
   try {
-    const { ticker, name, royalties, uris, attributes, hash } = await prompts(
-      promptQuestions
-    );
+    const { ticker, name, royalties, uris, attributes, hash } =
+      await prompts(promptQuestions);
 
     if (!ticker) {
       console.log(

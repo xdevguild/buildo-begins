@@ -34,9 +34,8 @@ export const changeOwnerAddress = async () => {
   ];
 
   try {
-    const { smartContractAddress, newOwnerAddress } = await prompts(
-      promptQuestion
-    );
+    const { smartContractAddress, newOwnerAddress } =
+      await prompts(promptQuestion);
 
     if (!smartContractAddress || !newOwnerAddress) {
       console.log(

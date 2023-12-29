@@ -36,9 +36,8 @@ const promptQuestions: PromptObject[] = [
 
 export const decodeTransaction = async () => {
   try {
-    const { senderAddress, receiverAddress, dataString, value } = await prompts(
-      promptQuestions
-    );
+    const { senderAddress, receiverAddress, dataString, value } =
+      await prompts(promptQuestions);
 
     if (!senderAddress || !receiverAddress || !dataString) {
       console.log(
